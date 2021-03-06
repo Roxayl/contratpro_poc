@@ -11,7 +11,7 @@ class RemplirDeclarationAchat implements PdfService
 {
     use PdfServiceTrait;
 
-    protected string $file = 'pdf/cerfa_13751.pdf';
+    protected string $file = 'pdf/cerfa_13751-01.pdf';
 
     public function __construct()
     {
