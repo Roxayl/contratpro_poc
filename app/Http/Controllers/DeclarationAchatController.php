@@ -2,21 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Pdf\RemplirDeclarationAchat;
 use Illuminate\Http\Request;
-use App\Services\RemplirDeclarationAchat;
 
-class ContratController extends Controller
+class DeclarationAchatController extends Controller
 {
-    public function fill()
-    {
-        return view('contrat.form');
-    }
-
-    public function create(Request $request)
-    {
-
-    }
-
     public function example()
     {
         $da = new RemplirDeclarationAchat();

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Pdf;
 
 use setasign\Fpdi\Fpdi;
 use setasign\Fpdi\PdfReader\PageBoundaries;
@@ -8,12 +8,13 @@ use setasign\Fpdi\PdfReader\PageBoundaries;
 class RemplirDeclarationAchat
 {
     private $pdf;
+    private string $file = 'pdf/cerfa_13751.pdf';
 
 	public function __construct()
 	{
 		$this->pdf = new Fpdi();
 
-		$pageCount = $this->pdf->setSourceFile(public_path('pdf/cerfa_13751.pdf'));
+		$pageCount = $this->pdf->setSourceFile(public_path($this->file));
 		$pageId = $this->pdf->importPage(1, PageBoundaries::MEDIA_BOX);
 
 		$this->pdf->addPage();
@@ -242,7 +243,7 @@ class RemplirDeclarationAchat
 		$this->pdf->Cell(120,5,strtoupper($nom));
 	}
 
-	public function setSIRENVendeur(int $siren)
+	public function setSIRENVendeur(string $siren)
 	{
 		$this->setSIREN($siren,161.5,200);
 	}
