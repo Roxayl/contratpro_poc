@@ -2,8 +2,6 @@
 
 namespace App\Services\Pdf\Traits;
 
-use setasign\Fpdi\Fpdi;
-
 trait PdfServiceTrait
 {
     /**
