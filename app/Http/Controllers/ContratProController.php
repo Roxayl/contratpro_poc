@@ -40,6 +40,22 @@ class ContratProController extends Controller
         return [
             'employeur' => [
                 'denomination' => "WAM Dentaire",
+                'noAdresse' => "23",
+                'voieAdresse' => "Rue des Peupliers",
+                'complementAdresse' => "Test bidule",
+                'codePostal' => '13100',
+                'commune' => "Aix-en-Provence",
+                'telephone' => "0680906158",
+                'courriel' => "dev@wamkey.com",
+                'caisseRetraiteComplementaire' => "Retraite",
+                'orgPrevoyance' => "AGIRC",
+                'particulierEmployeur' => true,
+                'urssafParticulierEmployeur' => 'test',
+                'siret' => "36252187900034",
+                'naf' => "43273",
+                'effectif' => "33",
+                'conventionCollective' => "INGENIEURS INFORMATICIENS",
+                'idccConvention' => "432873909",
             ],
             'salarie' => [
                 //
