@@ -8,6 +8,7 @@ class Employeur extends OfflineModel
     public string $noAdresse;
     public string $voieAdresse;
     public string $complementAdresse;
+    public string $codePostal;
     public string $commune;
     public string $telephone;
     public string $courriel;
@@ -17,6 +18,7 @@ class Employeur extends OfflineModel
     public string $urssafParticulierEmployeur;
     public string $siret;
     public string $naf;
+    public string $effectif;
     public string $conventionCollective;
     public string $idccConvention;
 }

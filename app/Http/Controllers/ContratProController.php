@@ -17,16 +17,19 @@ class ContratProController extends Controller
 
     public function create(Request $request)
     {
+        // Données d'entrée, autogénérées
         $data = $this->generateData();
 
+        // Créer les modèles
         $employeur = new Employeur();
         $employeur->mapFromArray($data['employeur']);
-
         $salarie = new Salarie();
         $salarie->mapFromArray($data['salarie']);
 
+        // Les assembler dans ContratPro
         $contratPro = new ContratPro($employeur, $salarie);
 
+        // Générer le pdf
         $pdfService = new RemplirContratPro($contratPro);
         $pdfService->fill();
         $pdfService->output();
