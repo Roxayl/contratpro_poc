@@ -47,7 +47,7 @@ class RemplirContratPro implements PdfService
         $this->executePrint();
     }
 
-    private function writeWithSpacing(string $str, float $x, float $y, float $spacing = null)
+    private function writeWithSpacing(?string $str, float $x, float $y, float $spacing = null)
     {
         if($spacing === null) {
             $spacing = $this->defaultSpacing;

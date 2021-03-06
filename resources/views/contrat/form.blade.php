@@ -16,6 +16,31 @@
             <input name="employeur[denomination]" id="employeur[denomination]" type="text" class="form-control">
         </div>
 
+        <div class="mb-3">
+            <label for="employeur[noAdresse]">N° Adresse</label>
+            <input name="employeur[noAdresse]" id="employeur[noAdresse]" type="text" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="employeur[voieAdresse]">Voie adresse</label>
+            <input name="employeur[voieAdresse]" id="employeur[voieAdresse]" type="text" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="employeur[complementAdresse]">Complément adresse</label>
+            <input name="employeur[complementAdresse]" id="employeur[complementAdresse]" type="text" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="employeur[codePostal]">Code postal</label>
+            <input name="employeur[codePostal]" id="employeur[codePostal]" type="text" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="employeur[commune]">Commune</label>
+            <input name="employeur[commune]" id="employeur[commune]" type="text" class="form-control">
+        </div>
+
         <button class="btn btn-primary" type="submit">Envoyer</button>
     </form>
 
