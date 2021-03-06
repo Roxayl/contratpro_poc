@@ -42,12 +42,12 @@ class RemplirContratPro implements PdfService
     /**
      * Remplir le formulaire PDF avec les données issues du modèle.
      */
-    public function fill()
+    public function fill() : void
     {
         $this->executePrint();
     }
 
-    private function writeWithSpacing(?string $str, float $x, float $y, ?float $spacing = null)
+    private function writeWithSpacing(?string $str, float $x, float $y, ?float $spacing = null) : void
     {
         if($spacing === null) {
             $spacing = $this->defaultSpacing;
@@ -61,37 +61,37 @@ class RemplirContratPro implements PdfService
         }
     }
 
-	private function printDenomination()
+	private function printDenomination() : void
     {
         $this->writeWithSpacing($this->model->employeur->denomination, 9.1, 62.5);
     }
 
-    private function printNoAdresse()
+    private function printNoAdresse() : void
     {
         $this->writeWithSpacing($this->model->employeur->noAdresse, 17, 77.5);
     }
 
-    private function printVoieAdresse()
+    private function printVoieAdresse() : void
     {
         $this->writeWithSpacing($this->model->employeur->voieAdresse, 54, 77.5);
     }
 
-    private function printComplementAdresse()
+    private function printComplementAdresse() : void
     {
         $this->writeWithSpacing($this->model->employeur->complementAdresse, 34, 83.7);
     }
 
-    private function printCodePostalEmployeur()
+    private function printCodePostalEmployeur() : void
     {
         $this->writeWithSpacing($this->model->employeur->codePostal, 33, 90);
     }
 
-    private function printCommuneEmployeur()
+    private function printCommuneEmployeur() : void
     {
         $this->writeWithSpacing($this->model->employeur->commune, 30.1, 96.2);
     }
 
-    private function printTelephoneEmployeur()
+    private function printTelephoneEmployeur() : void
     {
         $x = 25;
         $y = 103.5;
@@ -106,7 +106,7 @@ class RemplirContratPro implements PdfService
         }
     }
 
-    private function printCourrielEmployeur()
+    private function printCourrielEmployeur() : void
     {
         $spacing = 3.45;
         $array = explode("@", strtoupper($this->model->employeur->courriel));

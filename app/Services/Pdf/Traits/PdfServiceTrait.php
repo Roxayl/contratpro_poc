@@ -9,7 +9,7 @@ trait PdfServiceTrait
      * "print". Les méthodes print* contiennent toute la logique pour
      * intégrer une propriété d'un modèle dans le formulaire PDF.
      */
-    protected function executePrint()
+    protected function executePrint() : void
     {
         $methods = get_class_methods($this);
         foreach($methods as $method) {
@@ -22,7 +22,7 @@ trait PdfServiceTrait
     /**
      * Affiche le formulaire PDF généré.
      */
-    public function output()
+    public function output() : void
     {
         $this->pdf->Output();
     }
