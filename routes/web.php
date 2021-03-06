@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('contrat/form', 'App\Http\Controllers\ContratController@fill');
+Route::get('contrat/example', 'App\Http\Controllers\ContratController@example');
