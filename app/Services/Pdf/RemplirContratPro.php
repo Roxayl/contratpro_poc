@@ -2,15 +2,15 @@
 
 namespace App\Services\Pdf;
 
+use App\Models\ContratPro;
 use setasign\Fpdi\Fpdi;
 use setasign\Fpdi\PdfReader\PageBoundaries;
 
-class RemplirContratPro
+class RemplirContratPro extends PdfService
 {
-    private $pdf;
-    private string $file = 'pdf/cerfa_13751.pdf';
+    protected string $file = 'pdf/cerfa_13751.pdf';
 
-	public function __construct()
+	public function __construct(ContratPro $model)
 	{
 		$this->pdf = new Fpdi();
 
@@ -21,5 +21,14 @@ class RemplirContratPro
 		$this->pdf->useImportedPage($pageId, 0, 0);
 
 		$this->pdf->SetFont('Helvetica','',12);
+
+		$this->model = $model;
 	}
+
+	public function setNomPrenom()
+    {
+        $this->pdf->setXY(22, 37);
+        $this->pdf->cell(101, 5,
+            utf8_decode($this->model->employeur->nomPrenom));
+    }
 }

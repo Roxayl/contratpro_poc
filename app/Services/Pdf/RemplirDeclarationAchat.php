@@ -5,10 +5,9 @@ namespace App\Services\Pdf;
 use setasign\Fpdi\Fpdi;
 use setasign\Fpdi\PdfReader\PageBoundaries;
 
-class RemplirDeclarationAchat
+class RemplirDeclarationAchat extends PdfService
 {
-    private $pdf;
-    private string $file = 'pdf/cerfa_13751.pdf';
+    protected string $file = 'pdf/cerfa_13751.pdf';
 
 	public function __construct()
 	{
@@ -311,11 +310,6 @@ class RemplirDeclarationAchat
 			$this->pdf->SetXY(105,187.2);
 			$this->pdf->Cell(5,5,'X');
 		}
-	}
-
-	public function output()
-	{
-		$this->pdf->Output();
 	}
 
 
