@@ -7,7 +7,7 @@ use App\Services\Pdf\Traits\PdfServiceTrait;
 use setasign\Fpdi\Fpdi;
 use setasign\Fpdi\PdfReader\PageBoundaries;
 
-class RemplirDeclarationAchat implements PdfService
+class RemplirDeclarationAchat
 {
     use PdfServiceTrait;
 
@@ -304,6 +304,11 @@ class RemplirDeclarationAchat implements PdfService
             $this->pdf->SetXY(105, 187.2);
             $this->pdf->Cell(5, 5, 'X');
         }
+    }
+
+    public function output()
+    {
+        $this->pdf->Output();
     }
 
 
