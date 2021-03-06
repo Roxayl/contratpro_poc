@@ -2,11 +2,15 @@
 
 namespace App\Services\Pdf;
 
+use App\Services\Pdf\Contracts\PdfService;
+use App\Services\Pdf\Traits\PdfServiceTrait;
 use setasign\Fpdi\Fpdi;
 use setasign\Fpdi\PdfReader\PageBoundaries;
 
-class RemplirDeclarationAchat extends PdfService
+class RemplirDeclarationAchat implements PdfService
 {
+    use PdfServiceTrait;
+
     protected string $file = 'pdf/cerfa_13751.pdf';
 
 	public function __construct()
