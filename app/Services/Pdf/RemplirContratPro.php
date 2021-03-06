@@ -47,7 +47,7 @@ class RemplirContratPro implements PdfService
         $this->executePrint();
     }
 
-    private function writeWithSpacing(?string $str, float $x, float $y, float $spacing = null)
+    private function writeWithSpacing(?string $str, float $x, float $y, ?float $spacing = null)
     {
         if($spacing === null) {
             $spacing = $this->defaultSpacing;
@@ -108,6 +108,11 @@ class RemplirContratPro implements PdfService
 
     private function printCourrielEmployeur()
     {
-
+        $spacing = 3.45;
+        $array = explode("@", $this->model->employeur->courriel);
+        $user = $array[0];
+        $domain = $array[1];
+        $this->writeWithSpacing($user, 8.6, 113.6, $spacing);
+        $this->writeWithSpacing($domain, 61, 113.6, $spacing);
     }
 }

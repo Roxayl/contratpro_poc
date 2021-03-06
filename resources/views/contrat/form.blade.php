@@ -41,6 +41,16 @@
             <input name="employeur[commune]" id="employeur[commune]" type="text" class="form-control">
         </div>
 
+        <div class="mb-3">
+            <label for="employeur[telephone]">Téléphone</label>
+            <input name="employeur[telephone]" id="employeur[telephone]" type="text" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="employeur[courriel]">Courriel</label>
+            <input name="employeur[courriel]" id="employeur[courriel]" type="text" class="form-control">
+        </div>
+
         <button class="btn btn-primary" type="submit">Envoyer</button>
     </form>
 
