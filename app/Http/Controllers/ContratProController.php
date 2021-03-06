@@ -7,7 +7,6 @@ use App\Models\Employeur;
 use App\Models\Salarie;
 use App\Services\Pdf\RemplirContratPro;
 use Illuminate\Http\Request;
-use App\Services\Pdf\RemplirDeclarationAchat;
 
 class ContratProController extends Controller
 {
@@ -29,13 +28,18 @@ class ContratProController extends Controller
         $contratPro = new ContratPro($employeur, $salarie);
 
         $pdfService = new RemplirContratPro($contratPro);
+        $pdfService->fill();
+        $pdfService->output();
     }
 
     private function generateData()
     {
         return [
             'employeur' => [
-                'nomPrenom' => "WAM Dentaire",
+                'denomination' => "WAM Dentaire",
+            ],
+            'salarie' => [
+                //
             ]
         ];
     }

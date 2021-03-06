@@ -8,7 +8,7 @@ use setasign\Fpdi\PdfReader\PageBoundaries;
 
 class RemplirContratPro extends PdfService
 {
-    protected string $file = 'pdf/cerfa_13751.pdf';
+    protected string $file = 'pdf/cerfa_12434-03.pdf';
 
 	public function __construct(ContratPro $model)
 	{
@@ -25,10 +25,15 @@ class RemplirContratPro extends PdfService
 		$this->model = $model;
 	}
 
+    public function fill()
+    {
+        $this->setNomPrenom();
+    }
+
 	public function setNomPrenom()
     {
-        $this->pdf->setXY(22, 37);
+        $this->pdf->setXY(9.5, 62.7);
         $this->pdf->cell(101, 5,
-            utf8_decode($this->model->employeur->nomPrenom));
+            utf8_decode($this->model->employeur->denomination));
     }
 }

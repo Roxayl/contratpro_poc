@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 // Contrat
 Route::get('contrat/form', 'App\Http\Controllers\ContratProController@fill');
+Route::get('contrat/create', 'App\Http\Controllers\ContratProController@create');
 
 // Constat achat (exemple)
 Route::get('declaration-achat/example', 'App\Http\Controllers\DeclarationAchatController@example');

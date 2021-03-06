@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Employeur extends OfflineModel
 {
-    public string $nomPrenom;
+    public string $denomination;
     public string $noAdresse;
     public string $voieAdresse;
     public string $complementAdresse;
