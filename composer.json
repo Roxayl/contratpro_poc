@@ -1,14 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "roxayl/contratpro_poc",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "POC Contrat pro",
     "keywords": [
         "framework",
         "laravel"
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^7.3",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
