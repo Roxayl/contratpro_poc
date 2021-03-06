@@ -13,6 +13,7 @@ class RemplirContratPro implements PdfService
     use PdfServiceTrait;
 
     protected string $file = 'pdf/cerfa_12434-03.pdf';
+    protected float $defaultSpacing = 4.16;
 
     /**
      * Créé une instance de <code>RemplirContratPro</code>.
@@ -33,7 +34,7 @@ class RemplirContratPro implements PdfService
 		$this->pdf->addPage();
 		$this->pdf->useImportedPage($pageId, 0, 0);
 
-		$this->pdf->SetFont('Helvetica','',12);
+		$this->pdf->SetFont('Courier','',12);
 
 		$this->model = $model;
 	}
@@ -46,46 +47,48 @@ class RemplirContratPro implements PdfService
         $this->executePrint();
     }
 
-	private function printNomPrenom()
+    private function writeWithSpacing(string $str, float $x, float $y, float $spacing = null)
     {
-        $this->pdf->setXY(9.5, 62.7);
-        $this->pdf->cell(101, 5,
-            utf8_decode($this->model->employeur->denomination));
+        if($spacing === null) {
+            $spacing = $this->defaultSpacing;
+        }
+        $arr = str_split($str);
+        $this->pdf->setXY($x, $y);
+        foreach($arr as $key => $char) {
+            $this->pdf->cell(3, 5, $char);
+            $x += $spacing;
+            $this->pdf->setX($x);
+        }
+    }
+
+	private function printDenomination()
+    {
+        $this->writeWithSpacing($this->model->employeur->denomination, 9.1, 62.5);
     }
 
     private function printNoAdresse()
     {
-        $this->pdf->setXY(17, 77.5);
-        $this->pdf->cell(50, 5,
-            utf8_decode($this->model->employeur->noAdresse));
+        $this->writeWithSpacing($this->model->employeur->noAdresse, 17, 77.5);
     }
 
     private function printVoieAdresse()
     {
-        $this->pdf->setXY(54, 77.5);
-        $this->pdf->cell(70, 5,
-            utf8_decode($this->model->employeur->voieAdresse));
+        $this->writeWithSpacing($this->model->employeur->voieAdresse, 54, 77.5);
     }
 
     private function printComplementAdresse()
     {
-        $this->pdf->setXY(34, 84);
-        $this->pdf->cell(70, 5,
-            utf8_decode($this->model->employeur->complementAdresse));
+        $this->writeWithSpacing($this->model->employeur->complementAdresse, 34, 83.7);
     }
 
     private function printCodePostalEmployeur()
     {
-        $this->pdf->setXY(33, 90);
-        $this->pdf->cell(70, 5,
-            utf8_decode($this->model->employeur->codePostal));
+        $this->writeWithSpacing($this->model->employeur->codePostal, 33, 90);
     }
 
     private function printCommuneEmployeur()
     {
-        $this->pdf->setXY(31, 96.5);
-        $this->pdf->cell(70, 5,
-            utf8_decode($this->model->employeur->commune));
+        $this->writeWithSpacing($this->model->employeur->commune, 30.1, 96.2);
     }
 
     private function printTelephoneEmployeur()
@@ -101,5 +104,10 @@ class RemplirContratPro implements PdfService
             else            $x += 4;
             $this->pdf->setXY($x, $y);
         }
+    }
+
+    private function printCourrielEmployeur()
+    {
+
     }
 }

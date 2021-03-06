@@ -58,7 +58,7 @@ class ContratProController extends Controller
             'employeur' => [
                 'denomination' => "WAM Dentaire",
                 'noAdresse' => "23",
-                'voieAdresse' => "Rue des Peupliers",
+                'voieAdresse' => "Rue Fesch",
                 'complementAdresse' => "Test bidule",
                 'codePostal' => '13100',
                 'commune' => "Aix-en-Provence",
