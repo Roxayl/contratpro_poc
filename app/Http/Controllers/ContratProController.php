@@ -15,7 +15,7 @@ class ContratProController extends Controller
         return view('contrat.form');
     }
 
-    public function create(Request $request)
+    public function createFromDummyData()
     {
         // Données d'entrée, autogénérées
         $data = $this->generateData();
@@ -25,6 +25,23 @@ class ContratProController extends Controller
         $employeur->mapFromArray($data['employeur']);
         $salarie = new Salarie();
         $salarie->mapFromArray($data['salarie']);
+
+        // Les assembler dans ContratPro
+        $contratPro = new ContratPro($employeur, $salarie);
+
+        // Générer le pdf
+        $pdfService = new RemplirContratPro($contratPro);
+        $pdfService->fill();
+        $pdfService->output();
+    }
+
+    public function createFromRequest(Request $request)
+    {
+        // Créer les modèles, avec les données provenant de la requête.
+        $employeur = new Employeur();
+        $employeur->mapFromArray($request->get('employeur'));
+        $salarie = new Salarie();
+        // $salarie->mapFromArray($request->get('salarie'));
 
         // Les assembler dans ContratPro
         $contratPro = new ContratPro($employeur, $salarie);

@@ -4,22 +4,22 @@ namespace App\Models;
 
 class Salarie extends OfflineModel
 {
-    public string $nom;
-    public string $prenom;
-    public string $noAdresse;
-    public string $voieAdresse;
-    public string $complementAdresse;
-    public string $commune;
-    public string $telephone;
-    public string $courriel;
-    public string $nirSalarie;
-    public string $dateNaissance;
-    public string $sexe;
-    public bool $rqth;
-    public bool $inscritPoleEmploi;
-    public string $noInscription;
-    public int $dureePoleEmploi;
-    public string $situationAvantContrat;
-    public string $typeMinimumSocial;
-    public string $diplomePlusEleveObtenu;
+    public ?string $nom = null;
+    public ?string $prenom = null;
+    public ?string $noAdresse = null;
+    public ?string $voieAdresse = null;
+    public ?string $complementAdresse = null;
+    public ?string $commune = null;
+    public ?string $telephone = null;
+    public ?string $courriel = null;
+    public ?string $nirSalarie = null;
+    public ?string $dateNaissance = null;
+    public ?string $sexe = null;
+    public ?bool $rqth = null;
+    public ?bool $inscritPoleEmploi = null;
+    public ?string $noInscription = null;
+    public ?int $dureePoleEmploi = null;
+    public ?string $situationAvantContrat = null;
+    public ?string $typeMinimumSocial = null;
+    public ?string $diplomePlusEleveObtenu = null;
 }
