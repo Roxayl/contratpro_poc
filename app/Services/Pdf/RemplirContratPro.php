@@ -52,7 +52,7 @@ class RemplirContratPro implements PdfService
         if($spacing === null) {
             $spacing = $this->defaultSpacing;
         }
-        $arr = str_split($str);
+        $arr = str_split(strtoupper($str));
         $this->pdf->setXY($x, $y);
         foreach($arr as $key => $char) {
             $this->pdf->cell(3, 5, $char);
@@ -109,7 +109,7 @@ class RemplirContratPro implements PdfService
     private function printCourrielEmployeur()
     {
         $spacing = 3.45;
-        $array = explode("@", $this->model->employeur->courriel);
+        $array = explode("@", strtoupper($this->model->employeur->courriel));
         $user = $array[0];
         $domain = $array[1];
         $this->writeWithSpacing($user, 8.6, 113.6, $spacing);
