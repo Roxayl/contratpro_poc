@@ -20,5 +20,5 @@ class Employeur extends OfflineModel
     public ?string $naf = null;
     public ?string $effectif = null;
     public ?string $conventionCollective = null;
-    public ?string $idccConvention = null;
+    public ?string $idcc = null;
 }

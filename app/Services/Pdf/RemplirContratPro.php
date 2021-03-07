@@ -143,4 +143,44 @@ class RemplirContratPro implements PdfService
     {
         $this->writeWithSpacing($this->model->employeur->siret, 106.2, 88.2);
     }
+
+    private function printEmployeurNaf() : void
+    {
+        $this->writeWithSpacing($this->model->employeur->naf, 169, 94.2);
+    }
+
+    private function printEmployeurEffectif() : void
+    {
+        $this->writeWithSpacing($this->model->employeur->effectif, 106.2, 105);
+    }
+
+    private function printEmployeurConventionCollective() : void
+    {
+        $maxWidth = 22;
+        $words = explode(" ", utf8_decode($this->model->employeur->conventionCollective));
+        $lineBreakSpacing = 6.7;
+        $x = 106.3;
+        $y = 117;
+        $currentLine = 1;
+        $lineWordCount = 0;
+        foreach($words as $word) {
+            $thisWordCount = strlen($word);
+            if($lineWordCount + $thisWordCount + 1 > $maxWidth) {
+                // Si le mot dépasse le cadre, on passe à la ligne suivante
+                $currentLine++;
+                $lineWordCount = 0;
+                $y += $lineBreakSpacing;
+            } else {
+                // Sinon, on continue le mot comme il faut, en ajoutant un espace...
+                $word = str_repeat(' ', $lineWordCount) . $word;
+                $lineWordCount += $thisWordCount + 1;
+            }
+            $this->writeWithSpacing($word, $x, $y);
+        }
+    }
+
+    private function printEmployeurIdcc() : void
+    {
+        $this->writeWithSpacing($this->model->employeur->idcc, 158.7, 131.2);
+    }
 }

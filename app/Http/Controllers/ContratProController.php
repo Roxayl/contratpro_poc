@@ -72,7 +72,7 @@ class ContratProController extends Controller
                 'naf' => "43273",
                 'effectif' => "33",
                 'conventionCollective' => "INGENIEURS INFORMATICIENS",
-                'idccConvention' => "432873909",
+                'idcc' => "432873909",
             ],
             'salarie' => [
                 //
