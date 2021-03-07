@@ -61,37 +61,37 @@ class RemplirContratPro implements PdfService
         }
     }
 
-	private function printDenomination() : void
+	private function printEmployeurDenomination() : void
     {
         $this->writeWithSpacing($this->model->employeur->denomination, 9.1, 62.5);
     }
 
-    private function printNoAdresse() : void
+    private function printEmployeurNoAdresse() : void
     {
         $this->writeWithSpacing($this->model->employeur->noAdresse, 17, 77.5);
     }
 
-    private function printVoieAdresse() : void
+    private function printEmployeurVoieAdresse() : void
     {
         $this->writeWithSpacing($this->model->employeur->voieAdresse, 54, 77.5);
     }
 
-    private function printComplementAdresse() : void
+    private function printEmployeurComplementAdresse() : void
     {
         $this->writeWithSpacing($this->model->employeur->complementAdresse, 34, 83.7);
     }
 
-    private function printCodePostalEmployeur() : void
+    private function printEmployeurCodePostal() : void
     {
         $this->writeWithSpacing($this->model->employeur->codePostal, 33, 90);
     }
 
-    private function printCommuneEmployeur() : void
+    private function printEmployeurCommune() : void
     {
         $this->writeWithSpacing($this->model->employeur->commune, 30.1, 96.2);
     }
 
-    private function printTelephoneEmployeur() : void
+    private function printEmployeurTelephone() : void
     {
         $x = 25;
         $y = 103.5;
@@ -106,7 +106,7 @@ class RemplirContratPro implements PdfService
         }
     }
 
-    private function printCourrielEmployeur() : void
+    private function printEmployeurCourriel() : void
     {
         $spacing = 3.45;
         $array = explode("@", strtoupper($this->model->employeur->courriel));
@@ -114,5 +114,33 @@ class RemplirContratPro implements PdfService
         $domain = $array[1];
         $this->writeWithSpacing($user, 8.6, 113.6, $spacing);
         $this->writeWithSpacing($domain, 61, 113.6, $spacing);
+    }
+
+    private function printEmployeurCaisseRetraiteComplementaire() : void
+    {
+        $this->writeWithSpacing($this->model->employeur->caisseRetraiteComplementaire, 8.6, 123.8);
+    }
+
+    private function printEmployeurOrgPrevoyance() : void
+    {
+        $this->writeWithSpacing($this->model->employeur->orgPrevoyance, 8.6, 135.8);
+    }
+
+    private function printEmployeurParticulier() : void
+    {
+        if($this->model->employeur->particulierEmployeur)
+            $this->writeWithSpacing('X', 146.2, 62.2);
+        else
+            $this->writeWithSpacing('X', 165.2, 62.2);
+    }
+
+    private function printEmployeurUrssafParticulier() : void
+    {
+        $this->writeWithSpacing($this->model->employeur->urssafParticulierEmployeur, 106.2, 73);
+    }
+
+    private function printEmployeurSiret() : void
+    {
+        $this->writeWithSpacing($this->model->employeur->siret, 106.2, 88.2);
     }
 }
