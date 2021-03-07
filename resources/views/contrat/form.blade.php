@@ -201,6 +201,54 @@
             <input name="salarie[diplomePlusEleveObtenu]" id="salarie[diplomePlusEleveObtenu]" type="text" class="form-control">
         </div>
 
+
+        <h2>Tuteur</h2>
+
+        <h3>Tuteur au sein de l'établissement employeur</h3>
+
+        <div class="md-3 my-2">
+            <label for="tuteur[nom]">Nom</label>
+            <input name="tuteur[nom]" id="tuteur[nom]" type="text" class="form-control">
+        </div>
+
+        <div class="md-3 my-2">
+            <label for="tuteur[prenom]">Prénom</label>
+            <input name="tuteur[prenom]" id="tuteur[prenom]" type="text" class="form-control">
+        </div>
+
+        <div class="md-3 my-2">
+            <label for="tuteur[emploi]">Emploi occupé</label>
+            <input name="tuteur[emploi]" id="tuteur[emploi]" type="text" class="form-control">
+        </div>
+
+        <div class="md-3 my-2">
+            <label for="tuteur[dateNaissance]">Date de naissance</label>
+            <input name="tuteur[dateNaissance]" id="tuteur[dateNaissance]" type="text" class="form-control">
+        </div>
+
+
+        <h3>Tuteur de l'entreprise utilisatrice, <strong>si travail temporaire ou GEIQ</strong></h3>
+
+        <div class="md-3 my-2">
+            <label for="tuteur[utilNom]">Nom</label>
+            <input name="tuteur[utilNom]" id="tuteur[utilNom]" type="text" class="form-control">
+        </div>
+
+        <div class="md-3 my-2">
+            <label for="tuteur[utilPrenom]">Prénom</label>
+            <input name="tuteur[utilPrenom]" id="tuteur[utilPrenom]" type="text" class="form-control">
+        </div>
+
+        <div class="md-3 my-2">
+            <label for="tuteur[utilEmploi]">Emploi occupé</label>
+            <input name="tuteur[utilEmploi]" id="tuteur[utilEmploi]" type="text" class="form-control">
+        </div>
+
+        <div class="md-3 my-2">
+            <label for="tuteur[utilDateNaissance]">Date de naissance</label>
+            <input name="tuteur[utilDateNaissance]" id="tuteur[utilDateNaissance]" type="text" class="form-control">
+        </div>
+
         <button class="btn btn-primary my-3" type="submit">Envoyer</button>
     </form>
 
