@@ -245,8 +245,78 @@ class RemplirContratPro implements PdfService
         $this->writeWithSpacing($domain, 61.2, 204.5, $spacing);
     }
 
-    private function printNirSalarie() : void
+    private function printSalarieNirSalarie() : void
     {
         $this->writeWithSpacing($this->model->salarie->nirSalarie, 38.3, 210.6);
+    }
+
+    private function printSalarieDateNaissance() : void
+    {
+        $str = $this->model->salarie->dateNaissance;
+        if(empty($str)) return;
+        $jour = (string)($str[0] . $str[1]);
+        $mois = (string)($str[3] . $str[4]);
+        $annee = (string)(substr($str, -4));
+        $this->writeWithSpacing($jour, 44, 223);
+        $this->writeWithSpacing($mois, 56.4, 223);
+        $this->writeWithSpacing($annee, 68.7, 223);
+    }
+
+    private function printSalarieSexe() : void
+    {
+        $str = 'X';
+        $x = 21;
+        $y = 227.7;
+        if($this->model->salarie->sexe === "F") {
+            $x = 30.5;
+        }
+        $this->writeWithSpacing($str, $x, $y);
+    }
+
+    private function printSalarieRqth() : void
+    {
+        $str = 'X';
+        $x = 146.6;
+        $y = 172.6;
+        if($this->model->salarie->rqth) {
+            $x = 127.4;
+        }
+        $this->writeWithSpacing($str, $x, $y);
+    }
+
+    private function printSalarieInscritPoleEmploi() : void
+    {
+        $str = 'X';
+        $x = 164;
+        $y = 181.9;
+        if($this->model->salarie->inscritPoleEmploi) {
+            $x = 145;
+        }
+        $this->writeWithSpacing($str, $x, $y);
+    }
+
+    private function printSalarieNoPoleEmploi() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->noPoleEmploi, 156.4, 188.2);
+    }
+
+    private function printSalarieDureePoleEmploi() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->dureePoleEmploi, 120.5, 193.5);
+    }
+
+    private function printSalarieSituationAvantContrat() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->situationAvantContrat, 153.5, 202.7);
+    }
+
+    private function printSalarieTypeMinimumSocial() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->typeMinimumSocial, 177.1, 208.6);
+    }
+
+    private function printSalarieDiplomePlusEleveObtenu() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->diplomePlusEleveObtenu, 172.4, 214.8);
     }
 }

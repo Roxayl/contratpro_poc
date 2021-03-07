@@ -72,7 +72,7 @@ class ContratProController extends Controller
                 'naf' => "43273",
                 'effectif' => "33",
                 'conventionCollective' => "INGENIEURS INFORMATICIENS",
-                'idcc' => "432873909",
+                'idcc' => "4329",
             ],
             'salarie' => [
                 'nom' => "Nicolas",
@@ -91,9 +91,9 @@ class ContratProController extends Controller
                 'inscritPoleEmploi' => true,
                 'noPoleEmploi' => '45134512',
                 'dureePoleEmploi' => '5',
-                'situationAvantContrat' => '',
-                'typeMinimumSocial' => '',
-                'diplomePlusEleveObtenu' => '5',
+                'situationAvantContrat' => 'NA',
+                'typeMinimumSocial' => 'Q',
+                'diplomePlusEleveObtenu' => 'AA',
             ]
         ];
     }
