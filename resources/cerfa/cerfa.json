@@ -1,0 +1,24 @@
+{
+    "cerfa": "14321-5",
+    "pages": {
+        "1": {
+            "fields": {
+                "denomination": {
+                    "type": "text",
+                    "x": 9.1,
+                    "y": 62.5
+                },
+                "noAdresse": {
+                    "type": "text",
+                    "x": 17,
+                    "y": 77.5
+                },
+                "voieAdresse": {
+                    "type": "text",
+                    "x": 54,
+                    "y": 77.5
+                }
+            }
+        }
+    }
+}
