@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ContratPro;
 use App\Models\Employeur;
 use App\Models\Salarie;
+use App\Models\Tuteur;
 use App\Services\Pdf\RemplirContratPro;
 use Illuminate\Http\Request;
 
@@ -25,9 +26,11 @@ class ContratProController extends Controller
         $employeur->mapFromArray($data['employeur']);
         $salarie = new Salarie();
         $salarie->mapFromArray($data['salarie']);
+        $tuteur = new Tuteur();
+        $tuteur->mapFromArray($data['tuteur']);
 
         // Les assembler dans ContratPro
-        $contratPro = new ContratPro($employeur, $salarie);
+        $contratPro = new ContratPro($employeur, $salarie, $tuteur);
 
         // Générer le pdf
         $pdfService = new RemplirContratPro($contratPro);
@@ -41,10 +44,12 @@ class ContratProController extends Controller
         $employeur = new Employeur();
         $employeur->mapFromArray($request->get('employeur'));
         $salarie = new Salarie();
-        // $salarie->mapFromArray($request->get('salarie'));
+        $salarie->mapFromArray($request->get('salarie'));
+        $tuteur = new Tuteur();
+        $tuteur->mapFromArray($request->get('tuteur'));
 
         // Les assembler dans ContratPro
-        $contratPro = new ContratPro($employeur, $salarie);
+        $contratPro = new ContratPro($employeur, $salarie, $tuteur);
 
         // Générer le pdf
         $pdfService = new RemplirContratPro($contratPro);
@@ -94,6 +99,16 @@ class ContratProController extends Controller
                 'situationAvantContrat' => 'NA',
                 'typeMinimumSocial' => 'Q',
                 'diplomePlusEleveObtenu' => 'AA',
+            ],
+            'tuteur' => [
+                'nom' => "Monique",
+                'prenom' => "Rolbert",
+                'emploi' => "Maître de conférences",
+                'dateNaissance' => "19/06/1986",
+                'utilNom' => "Dupont",
+                'utilPrenom' => "Jean",
+                'utilEmploi' => "Président",
+                'utilDateNaissance' => "03/12/1977"
             ]
         ];
     }

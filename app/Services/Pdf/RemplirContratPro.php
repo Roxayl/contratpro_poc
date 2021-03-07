@@ -14,6 +14,7 @@ class RemplirContratPro implements PdfService
 
     protected string $file = 'pdf/cerfa_12434-03.pdf';
     protected float $defaultSpacing = 4.16;
+    private ContratPro $model;
 
     /**
      * Créé une instance de <code>RemplirContratPro</code>.
@@ -33,6 +34,7 @@ class RemplirContratPro implements PdfService
 
 		$this->pdf->addPage();
 		$this->pdf->useImportedPage($pageId, 0, 0);
+		$this->pdf->SetAutoPageBreak(true, 0);
 
 		$this->pdf->SetFont('Courier','',12);
 
@@ -318,5 +320,59 @@ class RemplirContratPro implements PdfService
     private function printSalarieDiplomePlusEleveObtenu() : void
     {
         $this->writeWithSpacing($this->model->salarie->diplomePlusEleveObtenu, 172.4, 214.8);
+    }
+
+    private function printTuteurNom() : void
+    {
+        $this->writeWithSpacing($this->model->tuteur->nom, 8.6, 253.5);
+    }
+
+    private function printTuteurPrenom() : void
+    {
+        $this->writeWithSpacing($this->model->tuteur->prenom, 8.6, 264);
+    }
+
+    private function printTuteurEmploi() : void
+    {
+        $this->writeWithSpacing(utf8_decode($this->model->tuteur->emploi), 8.8, 276);
+    }
+
+    private function printTuteurDateNaissance() : void
+    {
+        $str = $this->model->tuteur->dateNaissance;
+        if(empty($str)) return;
+        $jour = (string)($str[0] . $str[1]);
+        $mois = (string)($str[3] . $str[4]);
+        $annee = (string)(substr($str, -4));
+        $this->writeWithSpacing($jour, 44, 282.5);
+        $this->writeWithSpacing($mois, 56.4, 282.5);
+        $this->writeWithSpacing($annee, 68.7, 282.5);
+    }
+
+    private function printTuteurUtilNom() : void
+    {
+        $this->writeWithSpacing($this->model->tuteur->utilNom, 106.3, 253.5);
+    }
+
+    private function printTuteurUtilPrenom() : void
+    {
+        $this->writeWithSpacing($this->model->tuteur->utilPrenom, 106.3, 264);
+    }
+
+    private function printTuteurUtilEmploi() : void
+    {
+        $this->writeWithSpacing(utf8_decode($this->model->tuteur->utilEmploi), 106.3, 276);
+    }
+
+    private function printTuteurUtilDateNaissance() : void
+    {
+        $str = $this->model->tuteur->utilDateNaissance;
+        if(empty($str)) return;
+        $jour = (string)($str[0] . $str[1]);
+        $mois = (string)($str[3] . $str[4]);
+        $annee = (string)(substr($str, -4));
+        $this->writeWithSpacing($jour, 141.7, 282.5);
+        $this->writeWithSpacing($mois, 154.1, 282.5);
+        $this->writeWithSpacing($annee, 166.4, 282.5);
     }
 }
