@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 // Contrat
 Route::get('contrat/form', 'App\Http\Controllers\ContratProController@fill');
+Route::get('cerfa/test', 'App\Http\Controllers\CerfaController@poc');
 Route::get('contrat/create-example', 'App\Http\Controllers\ContratProController@createFromDummyData')
     ->name('contrat.create-dummy');
 Route::post('contrat/create', 'App\Http\Controllers\ContratProController@createFromRequest')
