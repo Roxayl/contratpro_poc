@@ -183,4 +183,70 @@ class RemplirContratPro implements PdfService
     {
         $this->writeWithSpacing($this->model->employeur->idcc, 158.7, 131.2);
     }
+
+    private function printSalarieNom() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->nom, 40, 150.2);
+    }
+
+    private function printSalariePrenom() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->prenom, 45.2, 156.2);
+    }
+
+    private function printSalarieNoAdresse() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->noAdresse, 12.9, 169.4);
+    }
+
+    private function printSalarieVoieAdresse() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->voieAdresse, 38, 169.4);
+    }
+
+    private function printSalarieComplementAdresse() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->complementAdresse, 34.3, 175.6);
+    }
+
+    private function printSalarieCodePostal() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->codePostal, 32.8, 181.7);
+    }
+
+    private function printSalarieCommune() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->commune, 30.2, 187.8);
+    }
+
+    private function printSalarieTelephone() : void
+    {
+        $x = 25.1;
+        $y = 194.3;
+        $telephone = str_split($this->model->employeur->telephone);
+        // str_split() enlève le '0' initial du numéro...
+        array_unshift($telephone, '0');
+        foreach($telephone as $i => $chiffre) {
+            $this->pdf->cell(3, 5, $chiffre);
+            if($i % 2 == 0) $x += 5.6;
+            else            $x += 4;
+            $this->pdf->setXY($x, $y);
+        }
+    }
+
+    private function printSalarieCourriel() : void
+    {
+        if(empty($this->model->salarie->courriel)) return;
+        $spacing = 3.45;
+        $array = explode("@", strtoupper($this->model->salarie->courriel));
+        $user = $array[0];
+        $domain = $array[1];
+        $this->writeWithSpacing($user, 8.6, 204.5, $spacing);
+        $this->writeWithSpacing($domain, 61.2, 204.5, $spacing);
+    }
+
+    private function printNirSalarie() : void
+    {
+        $this->writeWithSpacing($this->model->salarie->nirSalarie, 38.3, 210.6);
+    }
 }

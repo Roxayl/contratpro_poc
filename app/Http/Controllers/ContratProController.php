@@ -75,7 +75,25 @@ class ContratProController extends Controller
                 'idcc' => "432873909",
             ],
             'salarie' => [
-                //
+                'nom' => "Nicolas",
+                'prenom' => "Quentin",
+                'noAdresse' => "45",
+                "voieAdresse" => "Rue des Peupliers",
+                "complementAdresse" => "N/A",
+                "codePostal" => '13010',
+                "commune" => 'Marseille',
+                'telephone' => "068906158",
+                'courriel' => 'qnicolas@gmail.com',
+                'nirSalarie' => '136469',
+                'dateNaissance' => '03/02/1996',
+                'sexe' => 'M',
+                'rqth' => true,
+                'inscritPoleEmploi' => true,
+                'noPoleEmploi' => '45134512',
+                'dureePoleEmploi' => '5',
+                'situationAvantContrat' => '',
+                'typeMinimumSocial' => '',
+                'diplomePlusEleveObtenu' => '5',
             ]
         ];
     }
