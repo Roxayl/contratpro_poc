@@ -15,6 +15,8 @@ abstract class Field
     private ?float $x;
     private ?float $y;
 
+    private ?float $value;
+
     public function __construct(string $name, \stdClass $config, Cerfa $cerfa)
     {
         $this->cerfa = $cerfa;
@@ -26,6 +28,7 @@ abstract class Field
             $this->description = $config->description;
         $this->x = $config->x;
         $this->y = $config->y;
+        $this->value = null;
     }
 
     static function create(string $name, \stdClass $config, Cerfa $cerfa) : Field
