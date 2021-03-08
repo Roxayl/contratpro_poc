@@ -4,11 +4,11 @@ namespace App\Services\Cerfa;
 
 class Field
 {
-    private ?string $name = null;
-    private ?string $label = null;
-    private ?string $description = null;
-    private ?string $x = null;
-    private ?string $y = null;
+    private ?string $name;
+    private ?string $label;
+    private ?string $description;
+    private ?string $x;
+    private ?string $y;
 
     public function __construct(\stdClass $config)
     {
