@@ -76,7 +76,7 @@ class ContratProController extends Controller
                 'siret' => "36252187900034",
                 'naf' => "43273",
                 'effectif' => "33",
-                'conventionCollective' => "INGENIEURS INFORMATICIENS",
+                'conventionCollective' => "commerces de détail non alimentaires",
                 'idcc' => "4329",
             ],
             'salarie' => [

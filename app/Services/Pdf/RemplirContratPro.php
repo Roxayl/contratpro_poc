@@ -172,11 +172,10 @@ class RemplirContratPro implements PdfService
                 $currentLine++;
                 $lineWordCount = 0;
                 $y += $lineBreakSpacing;
-            } else {
-                // Sinon, on continue le mot comme il faut, en ajoutant un espace...
-                $word = str_repeat(' ', $lineWordCount) . $word;
-                $lineWordCount += $thisWordCount + 1;
             }
+            // Sinon, on continue le mot comme il faut, en ajoutant un espace...
+            $word = str_repeat(' ', $lineWordCount) . $word;
+            $lineWordCount += $thisWordCount + 1;
             $this->writeWithSpacing($word, $x, $y);
         }
     }
