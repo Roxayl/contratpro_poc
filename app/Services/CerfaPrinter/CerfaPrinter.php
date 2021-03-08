@@ -3,20 +3,25 @@
 namespace App\Services\CerfaPrinter;
 
 use App\Services\Cerfa\Cerfa;
+use App\Services\Cerfa\CerfaPdfGenerator;
 use App\Services\Cerfa\Field;
 use setasign\Fpdi\Fpdi;
 
-class   CerfaPrinter implements Printable
+class CerfaPrinter implements Printable
 {
     use CerfaPrinterTrait;
 
     protected Cerfa $cerfa;
-    protected Fpdi $fpdi;
+    protected ?CerfaPdfGenerator $pdfGenerator = null;
 
     public function __construct(Cerfa $cerfa)
     {
         $this->cerfa = $cerfa;
-        $this->fpdi = new Fpdi();
+    }
+
+    public function setGenerator(CerfaPdfGenerator $pdfGenerator)
+    {
+        $this->pdfGenerator = $pdfGenerator;
     }
 
     public function print(Field $field) : void
@@ -28,22 +33,24 @@ class   CerfaPrinter implements Printable
 
     private function printText(Field $field) : void
     {
-        $text = 'TEST';
+        $fpdi = $this->getFpdi();
+
+        $text = $field->getValue();
         $spacing = $field->spacing;
         $x = $field->getX();
         $y = $field->getY();
 
         $arr = str_split(strtoupper($text));
-        $this->pdf->setXY($x, $y);
+        $fpdi->setXY($x, $y);
         foreach($arr as $key => $char) {
-            $this->fpdi->cell(3, 5, $char);
+            $fpdi->cell(3, 5, $char);
             $x += $spacing;
-            $this->fpdi->setX($x);
+            $fpdi->setX($x);
         }
     }
 
     public function getFpdi(): Fpdi
     {
-        return $this->fpdi;
+        return $this->cerfa->getPdfGenerator()->getFpdi();;
     }
 }

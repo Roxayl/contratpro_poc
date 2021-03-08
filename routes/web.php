@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 // Cerfa
-Route::get('cerfa/test', 'App\Http\Controllers\CerfaController@poc');
+Route::get('cerfa/form', 'App\Http\Controllers\CerfaController@form');
+Route::get('cerfa/generate-pdf', 'App\Http\Controllers\CerfaController@generate');
 
 // Contrat
 Route::get('contrat/form', 'App\Http\Controllers\ContratProController@fill');

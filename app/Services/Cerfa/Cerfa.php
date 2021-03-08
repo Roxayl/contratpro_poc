@@ -11,6 +11,7 @@ class Cerfa
     private \stdClass $globals;
     private ?CerfaConfig $cerfaConfig;
     private int $pageCount = 0;
+    private ?CerfaPdfGenerator $pdfGenerator = null;
 
     public function __construct(CerfaConfig $cerfaConfig)
     {
@@ -47,7 +48,13 @@ class Cerfa
 
     public function hydrateData(array $data) : void
     {
-        // Ajoute les données d'un tableau
+        foreach($this->pages as $page) {
+            foreach($data as $fieldName => $value) {
+                if($page->hasField($fieldName)) {
+                    $page->getField($fieldName)->setValue($value);
+                }
+            }
+        }
     }
 
     public function generateForm() : string
@@ -59,12 +66,6 @@ class Cerfa
             }
         }
         return $output;
-    }
-
-    public function generatePdf(CerfaPdfGenerator $pdfGenerator)
-    {
-        $pdfGenerator->fillPdf();
-        $pdfGenerator->
     }
 
     public function hasGlobal($dot) : bool
@@ -83,5 +84,21 @@ class Cerfa
     public function getPages(): array
     {
         return $this->pages;
+    }
+
+    public function setGenerator(CerfaPdfGenerator $pdfGenerator)
+    {
+        $this->pdfGenerator = $pdfGenerator;
+    }
+
+    public function generatePdf()
+    {
+        $this->pdfGenerator->fillPdf();
+        $this->pdfGenerator->output();
+    }
+
+    public function getPdfGenerator(): ?CerfaPdfGenerator
+    {
+        return $this->pdfGenerator;
     }
 }
