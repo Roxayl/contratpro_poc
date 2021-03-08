@@ -2,6 +2,8 @@
 
 namespace App\Services\Cerfa;
 
+use Exception;
+
 class Page
 {
     private ?int $noPage;
@@ -21,7 +23,7 @@ class Page
     /**
      * @return Field[]|array
      */
-    public function getFields() : ?array
+    public function getFields(): ?array
     {
         return $this->fields;
     }
@@ -34,7 +36,7 @@ class Page
     public function getField(string $fieldName): Field
     {
         if(! $this->hasField($fieldName)) {
-            throw new \Exception();
+            throw new Exception();
         }
         return $this->fields[$fieldName];
     }

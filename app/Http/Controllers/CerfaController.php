@@ -53,7 +53,7 @@ class CerfaController extends Controller
         $cerfa->generatePdf();
     }
 
-    private function getData()
+    private function getData(): array
     {
         return [
             'employeurDenomination' => 'WAM',
