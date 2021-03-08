@@ -58,7 +58,10 @@ class CerfaController extends Controller
         return [
             'employeurDenomination' => 'WAM',
             'employeurNoAdresse' => '23',
-            'employeurVoieAdresse' => "Rue Fesch",
+            'employeurVoieAdresse' => "Rue",
+            'employeurComplementAdresse' => "Major Montricher",
+            'employeurCodePostal' => "20000",
+            'employeurCommune' => "Ajaccio",
             'employeurTelephone' => "0495208678",
             'employeurCourriel' => 'romu_fabiani@yahoo.fr',
             'employeurCaisseRetraiteComplementaire' => 'Agirc',
