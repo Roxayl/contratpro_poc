@@ -61,9 +61,10 @@ class Cerfa
         return $output;
     }
 
-    public function generatePdf()
+    public function generatePdf(CerfaPdfGenerator $pdfGenerator)
     {
-        //
+        $pdfGenerator->fillPdf();
+        $pdfGenerator->
     }
 
     public function hasGlobal($dot) : bool
