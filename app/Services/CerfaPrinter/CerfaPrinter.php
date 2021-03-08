@@ -36,7 +36,7 @@ class CerfaPrinter implements Printable
             $this->printRadio($field);
     }
 
-    private function printText(Text $field): void
+    protected function printText(Text $field): void
     {
         $fpdi = $this->getFpdi();
 
@@ -54,7 +54,7 @@ class CerfaPrinter implements Printable
         }
     }
 
-    private function writeWithSpacing(?string $str, float $x, float $y, float $spacing): void
+    protected function writeWithSpacing(?string $str, float $x, float $y, float $spacing): void
     {
         $arr = str_split(strtoupper($str));
         $this->getFpdi()->setXY($x, $y);
@@ -65,7 +65,7 @@ class CerfaPrinter implements Printable
         }
     }
 
-    private function printRadio(Radio $field) {
+    protected function printRadio(Radio $field) {
         $text = 'X';
         $value = $field->getValue();
 
