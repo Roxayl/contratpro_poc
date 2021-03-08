@@ -6,19 +6,19 @@
     "pages": {
         "1": {
             "fields": {
-                "denomination": {
+                "employeurDenomination": {
                     "label": "Dénomination ou nom de l'employeur",
                     "type": "text",
                     "x": 9.1,
                     "y": 62.5
                 },
-                "noAdresse": {
+                "employeurNoAdresse": {
                     "label": "No adresse",
                     "type": "text",
                     "x": 17,
                     "y": 77.5
                 },
-                "voieAdresse": {
+                "employeurVoieAdresse": {
                     "label": "Voie adresse",
                     "type": "text",
                     "x": 54,

@@ -9,6 +9,7 @@ abstract class Field
     private Cerfa $cerfa;
 
     private ?string $name;
+    private ?string $type;
     private ?string $label;
     private ?string $description = null;
     private ?string $x;
@@ -19,6 +20,7 @@ abstract class Field
         $this->cerfa = $cerfa;
 
         $this->name = $name;
+        $this->type = $config->type;
         $this->label = $config->label;
         if(!empty($config->description))
             $this->description = $config->description;
@@ -40,8 +42,19 @@ abstract class Field
         return new $class($name, $config, $cerfa);
     }
 
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function getArray() : array
+    {
+        return get_object_vars($this);
+    }
+
 }

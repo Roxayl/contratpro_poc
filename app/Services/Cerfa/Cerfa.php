@@ -2,7 +2,6 @@
 
 namespace App\Services\Cerfa;
 
-use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 
 class Cerfa
@@ -53,12 +52,18 @@ class Cerfa
 
     public function generateForm() : string
     {
-        return '';
+        $output = '';
+        foreach($this->pages as $page) {
+            foreach($page->getFields() as $field) {
+                $output .= view('cerfa.' . $field->getType(), $field->getArray())->render();
+            }
+        }
+        return $output;
     }
 
-    public function generatePdf() : Response
+    public function generatePdf()
     {
-        return response();
+        //
     }
 
     public function hasGlobal($dot) : bool
@@ -69,5 +74,10 @@ class Cerfa
     public function getGlobal($dot)
     {
         return Arr::get( (array)$this->globals, $dot );
+    }
+
+    public function getPages(): array
+    {
+        return $this->pages;
     }
 }
