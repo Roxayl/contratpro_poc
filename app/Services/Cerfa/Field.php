@@ -66,5 +66,4 @@ abstract class Field
     {
         return $this->y;
     }
-
 }
