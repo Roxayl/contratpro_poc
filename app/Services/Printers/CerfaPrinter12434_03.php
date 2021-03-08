@@ -10,7 +10,7 @@ class CerfaPrinter12434_03 extends CerfaPrinter
 {
     use CerfaPrinterTrait;
 
-    public function printEmployeurTelephone(Field $field) : void
+    public function printEmployeurTelephone(Field $field): void
     {
         $x = $field->getX();
         $y = $field->getY();

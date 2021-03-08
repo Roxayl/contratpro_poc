@@ -3,12 +3,13 @@
 namespace App\Services\Cerfa;
 
 use Illuminate\Support\Arr;
+use stdClass;
 
 class Cerfa
 {
     private ?string $id;
     private array $pages;
-    private \stdClass $globals;
+    private stdClass $globals;
     private ?CerfaConfig $cerfaConfig;
     private int $pageCount = 0;
     private ?CerfaPdfGenerator $pdfGenerator = null;
@@ -23,7 +24,7 @@ class Cerfa
         $this->initialize();
     }
 
-    private function initialize()
+    private function initialize(): void
     {
         $config = $this->cerfaConfig->getConfig();
 
@@ -38,7 +39,7 @@ class Cerfa
         }
     }
 
-    private function addPage(Page $page, ?int $index = null)
+    private function addPage(Page $page, ?int $index = null): void
     {
         if($index == null)
             $index = $this->pageCount + 1;
@@ -46,7 +47,7 @@ class Cerfa
         $this->pageCount = count($this->pages);
     }
 
-    public function hydrateData(array $data) : void
+    public function hydrateData(array $data): void
     {
         foreach($this->pages as $page) {
             foreach($data as $fieldName => $value) {
@@ -57,7 +58,7 @@ class Cerfa
         }
     }
 
-    public function generateForm() : string
+    public function generateForm(): string
     {
         $output = '';
         foreach($this->pages as $page) {
@@ -68,14 +69,14 @@ class Cerfa
         return $output;
     }
 
-    public function hasGlobal($dot) : bool
+    public function hasGlobal($dot): bool
     {
-        return Arr::has( (array)$this->globals, $dot );
+        return Arr::has( (array)$this->globals, $dot);
     }
 
     public function getGlobal($dot)
     {
-        return Arr::get( (array)$this->globals, $dot );
+        return Arr::get( (array)$this->globals, $dot);
     }
 
     /**

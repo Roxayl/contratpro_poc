@@ -3,6 +3,7 @@
 namespace App\Services\Cerfa;
 
 use InvalidArgumentException;
+use stdClass;
 
 abstract class Field
 {
@@ -17,27 +18,28 @@ abstract class Field
 
     private ?string $value;
 
-    public function __construct(string $name, \stdClass $config, Cerfa $cerfa)
+    public function __construct(string $name, stdClass $config, Cerfa $cerfa)
     {
         $this->cerfa = $cerfa;
 
         $this->name = $name;
         $this->type = $config->type;
         $this->label = $config->label;
-        if(!empty($config->description))
+        if(! empty($config->description))
             $this->description = $config->description;
         $this->x = $config->x;
         $this->y = $config->y;
         $this->value = null;
     }
 
-    static function create(string $name, \stdClass $config, Cerfa $cerfa) : Field
+    static function create(string $name, stdClass $config, Cerfa $cerfa): Field
     {
         $type = $config->type;
 
         switch($type) {
             case 'text':
-                $class = Text::class; break;
+                $class = Text::class;
+                break;
             default:
                 throw new InvalidArgumentException("Classe non existante.");
         }
@@ -45,7 +47,7 @@ abstract class Field
         return new $class($name, $config, $cerfa);
     }
 
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -55,7 +57,7 @@ abstract class Field
         return $this->type;
     }
 
-    public function getArray() : array
+    public function getArray(): array
     {
         return get_object_vars($this);
     }
