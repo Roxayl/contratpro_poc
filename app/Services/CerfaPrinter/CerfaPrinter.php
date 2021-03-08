@@ -6,16 +6,19 @@ use App\Services\Cerfa\Cerfa;
 use App\Services\Cerfa\Field;
 use setasign\Fpdi\Fpdi;
 
-class CerfaPrinter implements Printable
+class   CerfaPrinter implements Printable
 {
+    use CerfaPrinterTrait;
+
     protected Cerfa $cerfa;
     protected Fpdi $fpdi;
 
-    public function __construct(Cerfa $cerfa, Fpdi $fpdi)
+    public function __construct(Cerfa $cerfa)
     {
         $this->cerfa = $cerfa;
-        $this->fpdi = $fpdi;
+        $this->fpdi = new Fpdi();
     }
+
     public function print(Field $field) : void
     {
         if($field->getType() == 'text') {
@@ -37,5 +40,10 @@ class CerfaPrinter implements Printable
             $x += $spacing;
             $this->fpdi->setX($x);
         }
+    }
+
+    public function getFpdi(): Fpdi
+    {
+        return $this->fpdi;
     }
 }
