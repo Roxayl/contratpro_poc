@@ -38,7 +38,7 @@ class CerfaPrinter12434_03 extends CerfaPrinter
     public function printEmployeurConventionCollective(Field $field): void
     {
         $maxWidth = 22;
-        $words = explode(" ", utf8_decode($field->getValue()));
+        $words = explode(" ", $field->getValue());
         $lineBreakSpacing = 6.7;
         $x = 106.3;
         $y = 117;
@@ -85,7 +85,7 @@ class CerfaPrinter12434_03 extends CerfaPrinter
         $this->writeWithSpacing($domain, 61.2, 204.5, $spacing);
     }
 
-    public function printSalarieDateNaissance(Field $field) : void
+    public function printSalarieDateNaissance(Field $field): void
     {
         $str = $field->getValue();
         if(empty($str)) return;
@@ -96,5 +96,18 @@ class CerfaPrinter12434_03 extends CerfaPrinter
         $this->writeWithSpacing($jour, 44, 223, $spacing);
         $this->writeWithSpacing($mois, 56.4, 223, $spacing);
         $this->writeWithSpacing($annee, 68.7, 223, $spacing);
+    }
+
+    public function printTuteurDateNaissance(Field $field): void
+    {
+        $str = $field->getValue();
+        if(empty($str)) return;
+        $spacing = $this->cerfa->getGlobal('defaultSpacing');
+        $jour = (string)($str[0] . $str[1]);
+        $mois = (string)($str[3] . $str[4]);
+        $annee = (string)(substr($str, -4));
+        $this->writeWithSpacing($jour, 44, 282.5, $spacing);
+        $this->writeWithSpacing($mois, 56.4, 282.5, $spacing);
+        $this->writeWithSpacing($annee, 68.7, 282.5, $spacing);
     }
 }

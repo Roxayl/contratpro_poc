@@ -276,6 +276,70 @@
                     "type": "text",
                     "x": 172.4,
                     "y": 214.8
+                },
+
+                "tuteurTitre": {
+                    "label": "Tuteur",
+                    "type": "title",
+                    "level": 3
+                },
+                "tuteurBaseTitre": {
+                    "label": "Tuteur au sein de l'établissement employeur",
+                    "type": "title",
+                    "level": 4
+                },
+                "tuteurNom": {
+                    "label": "Nom du tuteur",
+                    "type": "text",
+                    "x": 8.6,
+                    "y": 253.5
+                },
+                "tuteurPrenom": {
+                    "label": "Prénom du tuteur",
+                    "type": "text",
+                    "x": 8.6,
+                    "y": 264
+                },
+                "tuteurEmploi": {
+                    "label": "Emploi occupé par le tuteur",
+                    "type": "text",
+                    "x": 8.8,
+                    "y": 276
+                },
+                "tuteurDateNaissance": {
+                    "label": "Date de naissance du tuteur",
+                    "type": "text",
+                    "x": 8.8,
+                    "y": 276
+                },
+                "tuteurUtilTitre": {
+                    "label": "Tuteur de l’entreprise utilisatrice, si travail temporaire ou GEIQ",
+                    "type": "title",
+                    "level": 4
+                },
+                "tuteurUtilNom": {
+                    "label": "Nom du tuteur",
+                    "type": "text",
+                    "x": 106.3,
+                    "y": 253.5
+                },
+                "tuteurUtilPrenom": {
+                    "label": "Prénom du tuteur",
+                    "type": "text",
+                    "x": 106.3,
+                    "y": 264
+                },
+                "tuteurUtilEmploi": {
+                    "label": "Emploi occupé par le tuteur",
+                    "type": "text",
+                    "x": 106.3,
+                    "y": 276
+                },
+                "tuteurUtilDateNaissance": {
+                    "label": "Date de naissance du tuteur",
+                    "type": "text",
+                    "x": 141.7,
+                    "y": 282.5
                 }
             }
         },
