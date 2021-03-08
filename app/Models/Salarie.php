@@ -9,6 +9,7 @@ class Salarie extends OfflineModel
     public ?string $noAdresse = null;
     public ?string $voieAdresse = null;
     public ?string $complementAdresse = null;
+    public ?string $codePostal = null;
     public ?string $commune = null;
     public ?string $telephone = null;
     public ?string $courriel = null;
@@ -17,7 +18,7 @@ class Salarie extends OfflineModel
     public ?string $sexe = null;
     public ?bool $rqth = null;
     public ?bool $inscritPoleEmploi = null;
-    public ?string $noInscription = null;
+    public ?string $noPoleEmploi = null;
     public ?int $dureePoleEmploi = null;
     public ?string $situationAvantContrat = null;
     public ?string $typeMinimumSocial = null;

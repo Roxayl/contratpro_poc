@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ContratPro;
 use App\Models\Employeur;
 use App\Models\Salarie;
+use App\Models\Tuteur;
 use App\Services\Pdf\RemplirContratPro;
 use Illuminate\Http\Request;
 
@@ -25,9 +26,11 @@ class ContratProController extends Controller
         $employeur->mapFromArray($data['employeur']);
         $salarie = new Salarie();
         $salarie->mapFromArray($data['salarie']);
+        $tuteur = new Tuteur();
+        $tuteur->mapFromArray($data['tuteur']);
 
         // Les assembler dans ContratPro
-        $contratPro = new ContratPro($employeur, $salarie);
+        $contratPro = new ContratPro($employeur, $salarie, $tuteur);
 
         // Générer le pdf
         $pdfService = new RemplirContratPro($contratPro);
@@ -41,10 +44,12 @@ class ContratProController extends Controller
         $employeur = new Employeur();
         $employeur->mapFromArray($request->get('employeur'));
         $salarie = new Salarie();
-        // $salarie->mapFromArray($request->get('salarie'));
+        $salarie->mapFromArray($request->get('salarie'));
+        $tuteur = new Tuteur();
+        $tuteur->mapFromArray($request->get('tuteur'));
 
         // Les assembler dans ContratPro
-        $contratPro = new ContratPro($employeur, $salarie);
+        $contratPro = new ContratPro($employeur, $salarie, $tuteur);
 
         // Générer le pdf
         $pdfService = new RemplirContratPro($contratPro);
@@ -71,11 +76,39 @@ class ContratProController extends Controller
                 'siret' => "36252187900034",
                 'naf' => "43273",
                 'effectif' => "33",
-                'conventionCollective' => "INGENIEURS INFORMATICIENS",
-                'idccConvention' => "432873909",
+                'conventionCollective' => "commerces de détail non alimentaires",
+                'idcc' => "4329",
             ],
             'salarie' => [
-                //
+                'nom' => "Nicolas",
+                'prenom' => "Quentin",
+                'noAdresse' => "45",
+                "voieAdresse" => "Rue des Peupliers",
+                "complementAdresse" => "N/A",
+                "codePostal" => '13010',
+                "commune" => 'Marseille',
+                'telephone' => "068906158",
+                'courriel' => 'qnicolas@gmail.com',
+                'nirSalarie' => '136469',
+                'dateNaissance' => '03/02/1996',
+                'sexe' => 'M',
+                'rqth' => true,
+                'inscritPoleEmploi' => true,
+                'noPoleEmploi' => '45134512',
+                'dureePoleEmploi' => '5',
+                'situationAvantContrat' => 'NA',
+                'typeMinimumSocial' => 'Q',
+                'diplomePlusEleveObtenu' => 'AA',
+            ],
+            'tuteur' => [
+                'nom' => "Monique",
+                'prenom' => "Rolbert",
+                'emploi' => "Maître de conférences",
+                'dateNaissance' => "19/06/1986",
+                'utilNom' => "Dupont",
+                'utilPrenom' => "Jean",
+                'utilEmploi' => "Président",
+                'utilDateNaissance' => "03/12/1977"
             ]
         ];
     }
