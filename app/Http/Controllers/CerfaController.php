@@ -60,7 +60,16 @@ class CerfaController extends Controller
             'employeurNoAdresse' => '23',
             'employeurVoieAdresse' => "Rue Fesch",
             'employeurTelephone' => "0495208678",
+            'employeurCourriel' => 'romu_fabiani@yahoo.fr',
+            'employeurCaisseRetraiteComplementaire' => 'Agirc',
+            'employeurOrgPrevoyance' => 'Test',
             'employeurParticulierEmployeur' => 'non',
+            'employeurUrssafParticulierEmployeur' => 'test',
+            'employeurSiret' => "36252187900034",
+            'employeurNaf' => "43273",
+            'employeurEffectif' => "33",
+            'employeurConventionCollective' => "commerces de détail non alimentaires",
+            'employeurIdcc' => "4329",
         ];
     }
 }
