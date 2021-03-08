@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 // Cerfa
 Route::get('cerfa/form', 'App\Http\Controllers\CerfaController@form');
-Route::get('cerfa/generate-pdf', 'App\Http\Controllers\CerfaController@generate');
+Route::match(['get', 'post'], 'cerfa/generate-pdf', 'App\Http\Controllers\CerfaController@generate')->name('cerfa.generate-pdf');
 
 // Contrat
 Route::get('contrat/form', 'App\Http\Controllers\ContratProController@fill');

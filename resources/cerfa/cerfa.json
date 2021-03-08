@@ -1,7 +1,7 @@
 {
     "cerfa": "12434-03",
     "globals": {
-        "defaultSpacing": 5
+        "defaultSpacing": 4.16
     },
     "pages": {
         "1": {
@@ -31,6 +31,9 @@
                     "y": 103.5
                 }
             }
+        },
+        "2": {
+            "fields": []
         }
     }
 }

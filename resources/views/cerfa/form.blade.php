@@ -8,7 +8,7 @@
 
     @parent
 
-    <form method="POST" action="{{ route('contrat.create') }}" class="col-lg-8 offset-lg-2">
+    <form method="POST" action="{{ route('cerfa.generate-pdf') }}" class="col-lg-8 offset-lg-2">
         @csrf
 
         {!! $content !!}
