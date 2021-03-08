@@ -19,9 +19,13 @@ class CerfaController extends Controller
         return view('cerfa.form')->with('content', $cerfa->generateForm());
     }
 
-    public function generate()
+    public function generate(Request $request)
     {
-        $data = $this->getData();
+        if($request->isMethod('post')) {
+            $data = $request->all();
+        } else {
+            $data = $this->getData();
+        }
 
         // On charge les données depuis le json !
         $cerfaConfig = new CerfaConfig();
