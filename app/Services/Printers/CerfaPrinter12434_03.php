@@ -4,11 +4,11 @@ namespace App\Services\Printers;
 
 use App\Services\Cerfa\Field;
 use App\Services\CerfaPrinter\CerfaPrinter;
-use App\Services\CerfaPrinter\Printable;
+use App\Services\CerfaPrinter\CerfaPrinterTrait;
 
-class CerfaPrinter12434_03 implements Printable
+class CerfaPrinter12434_03 extends CerfaPrinter
 {
-    use CerfaPrinter;
+    use CerfaPrinterTrait;
 
     private function printEmployeurTelephone(Field $field) : void
     {

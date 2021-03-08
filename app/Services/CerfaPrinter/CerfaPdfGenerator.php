@@ -12,7 +12,7 @@ class CerfaPdfGenerator
     private string $pdfFile;
     private Printable $printer;
     private Cerfa $cerfa;
-    private Fpdi $pdf;
+    private Fpdi $fpdi;
 
     public function __construct(Cerfa $cerfa, Printable $printer, string $pdfFile)
     {
@@ -21,25 +21,25 @@ class CerfaPdfGenerator
         $this->printer = $printer;
     }
 
-    public function initializePdf()
+    public function initializePdf(): void
     {
         $pdf = new Fpdi();
 		$pageCount = $pdf->setSourceFile($this->pdfFile);
 		$pdf->SetFont('Courier','',12);
 		$pdf->SetAutoPageBreak(true, 0);
-		$this->pdf = $pdf;
+		$this->fpdi = $pdf;
     }
 
-    public function fillPdf()
+    public function fillPdf(): void
     {
         $pages = $this->cerfa->getPages();
 
         foreach($pages as $pageNo => $page) {
 
             // On créé une nouvelle page, et charge la page depuis le pdf d'origine...
-            $this->pdf->addPage();
-		    $pageId = $this->pdf->importPage($pageNo, PageBoundaries::MEDIA_BOX);
-            $this->pdf->useImportedPage($pageId, 0, 0);
+            $this->fpdi->addPage();
+		    $pageId = $this->fpdi->importPage($pageNo, PageBoundaries::MEDIA_BOX);
+            $this->fpdi->useImportedPage($pageId, 0, 0);
 
             // On parcourt chaque champ, histoire d'essayer de les ajouter dans le pdf...e
             foreach($page->getFields() as $field) {
@@ -53,7 +53,7 @@ class CerfaPdfGenerator
 
                 // Sinon, on imprime le champ de manière "standard", selon les données de configuration
                 else {
-                    // standard
+                    $this->printer->print($field);
                 }
             }
 
