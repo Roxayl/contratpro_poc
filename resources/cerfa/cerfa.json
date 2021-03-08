@@ -1,19 +1,25 @@
 {
     "cerfa": "14321-5",
+    "globals": {
+        "defaultSpacing": 5
+    },
     "pages": {
         "1": {
             "fields": {
                 "denomination": {
+                    "label": "Dénomination ou nom de l'employeur",
                     "type": "text",
                     "x": 9.1,
                     "y": 62.5
                 },
                 "noAdresse": {
+                    "label": "No adresse",
                     "type": "text",
                     "x": 17,
                     "y": 77.5
                 },
                 "voieAdresse": {
+                    "label": "Voie adresse",
                     "type": "text",
                     "x": 54,
                     "y": 77.5
