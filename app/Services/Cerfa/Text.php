@@ -4,7 +4,9 @@ namespace App\Services\Cerfa;
 
 class Text extends Field
 {
-    public ?float $spacing;
+    private ?float $spacing;
+    private ?float $x;
+    private ?float $y;
 
     public function __construct(string $name, \stdClass $config, Cerfa $cerfa)
     {
@@ -15,6 +17,24 @@ class Text extends Field
         } else {
             $spacing = $config->spacing;
         }
+
+        $this->x = $config->x;
+        $this->y = $config->y;
         $this->spacing = $spacing;
+    }
+
+    public function getSpacing(): float
+    {
+        return $this->spacing;
+    }
+
+    public function getX(): ?float
+    {
+        return $this->x;
+    }
+
+    public function getY(): ?float
+    {
+        return $this->y;
     }
 }

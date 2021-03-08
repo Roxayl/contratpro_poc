@@ -59,7 +59,8 @@ class CerfaController extends Controller
             'employeurDenomination' => 'WAM',
             'employeurNoAdresse' => '23',
             'employeurVoieAdresse' => "Rue Fesch",
-            'employeurTelephone' => "0495208678"
+            'employeurTelephone' => "0495208678",
+            'employeurParticulierEmployeur' => 'non',
         ];
     }
 }

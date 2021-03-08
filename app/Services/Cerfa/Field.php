@@ -13,8 +13,6 @@ abstract class Field
     private ?string $type;
     private ?string $label;
     private ?string $description = null;
-    private ?float $x;
-    private ?float $y;
 
     private ?string $value;
 
@@ -27,8 +25,6 @@ abstract class Field
         $this->label = $config->label;
         if(! empty($config->description))
             $this->description = $config->description;
-        $this->x = $config->x;
-        $this->y = $config->y;
         $this->value = null;
     }
 
@@ -38,8 +34,9 @@ abstract class Field
 
         switch($type) {
             case 'text':
-                $class = Text::class;
-                break;
+                $class = Text::class; break;
+            case 'radio':
+                $class = Radio::class; break;
             default:
                 throw new InvalidArgumentException("Classe non existante.");
         }
@@ -60,16 +57,6 @@ abstract class Field
     public function getArray(): array
     {
         return get_object_vars($this);
-    }
-
-    public function getX(): ?float
-    {
-        return $this->x;
-    }
-
-    public function getY(): ?float
-    {
-        return $this->y;
     }
 
     public function getValue(): ?string
