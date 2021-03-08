@@ -3,14 +3,17 @@
 namespace App\Services\CerfaPrinter;
 
 use App\Services\Cerfa\Cerfa;
-use App\Services\Cerfa\Field;
-use Illuminate\Support\Str;
+use setasign\Fpdi\Fpdi;
 
 trait CerfaPrinter
 {
-    public function __construct(Cerfa $cerfa)
+    private Cerfa $cerfa;
+    private Fpdi $fpdi;
+
+    public function __construct(Cerfa $cerfa, Fpdi $fpdi)
     {
         $this->cerfa = $cerfa;
+        $this->fpdi = $fpdi;
     }
 
     public function hasPrinterMethod(string $methodName) : bool
