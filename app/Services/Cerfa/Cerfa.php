@@ -8,13 +8,15 @@ class Cerfa
 {
     private ?string $id;
     private array $pages;
+    private array $globals;
     private ?CerfaConfig $cerfaConfig;
-    private int $pageCount = 1;
+    private int $pageCount = 0;
 
     public function __construct(CerfaConfig $cerfaConfig)
     {
-        $this->id =
         $this->cerfaConfig = $cerfaConfig;
+        $this->id = $this->cerfaConfig->getConfig()->cerfa;
+        $this->globals = $this->cerfaConfig->getConfig()->globals;
         $this->pages = [];
 
         $this->initialize();
@@ -27,12 +29,11 @@ class Cerfa
         $this->id = $config->cerfa;
         foreach($config->pages as $noPage => $configPage) {
             $page = new Page($noPage);
-            foreach($configPage->fields as $configField) {
-                $field = new Field($configField);
+            foreach($configPage->fields as $nameField => $configField) {
+                $field = Field::create($nameField, $configField);
                 $page->addField($field);
             }
             $this->addPage($page);
-            $this->pageCount++;
         }
     }
 

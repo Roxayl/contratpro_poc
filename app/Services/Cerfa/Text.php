@@ -6,9 +6,10 @@ class Text extends Field
 {
     public ?float $spacing;
 
-    public function __construct(\stdClass $config)
+    public function __construct(string $name, \stdClass $config)
     {
-        parent::__construct($config);
+        parent::__construct($name, $config);
+
         $this->spacing = $config->spacing;
     }
 }

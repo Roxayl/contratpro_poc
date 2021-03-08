@@ -14,6 +14,8 @@ class CerfaController extends Controller
         $cerfaConfig->loadFromFile(base_path('resources/cerfa/cerfa.json'));
 
         $cerfa = new Cerfa($cerfaConfig);
+        dd($cerfa);
+
         $cerfa->hydrateData($request->all());
 
         return $cerfa->generatePdf();
