@@ -15,7 +15,7 @@ abstract class Field
     private ?float $x;
     private ?float $y;
 
-    private ?float $value;
+    private ?string $value;
 
     public function __construct(string $name, \stdClass $config, Cerfa $cerfa)
     {
@@ -68,5 +68,15 @@ abstract class Field
     public function getY(): ?float
     {
         return $this->y;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
+    public function setValue(?string $value): void
+    {
+        $this->value = $value;
     }
 }

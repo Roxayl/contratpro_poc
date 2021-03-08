@@ -13,7 +13,7 @@ class Page
         $this->fields = [];
     }
 
-    public function addField(Field $field) : void
+    public function addField(Field $field): void
     {
         $this->fields[$field->getName()] = $field;
     }
@@ -24,5 +24,18 @@ class Page
     public function getFields() : ?array
     {
         return $this->fields;
+    }
+
+    public function hasField(string $fieldName): bool
+    {
+        return isset($this->fields[$fieldName]);
+    }
+
+    public function getField(string $fieldName): Field
+    {
+        if(! $this->hasField($fieldName)) {
+            throw new \Exception();
+        }
+        return $this->fields[$fieldName];
     }
 }
