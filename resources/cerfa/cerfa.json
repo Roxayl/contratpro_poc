@@ -29,6 +29,22 @@
                     "type": "text",
                     "x": 25,
                     "y": 103.5
+                },
+                "employeurParticulierEmployeur": {
+                    "label": "Particulier-employeur",
+                    "type": "radio",
+                    "options": {
+                        "oui": {
+                            "label": "Oui",
+                            "x": 146.2,
+                            "y": 62.2
+                        },
+                        "non": {
+                            "label": "Non",
+                            "x": 165.2,
+                            "y": 62.2
+                        }
+                    }
                 }
             }
         },
