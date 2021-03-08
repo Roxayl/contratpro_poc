@@ -45,18 +45,12 @@ class CerfaPrinter implements Printable
         $x = $field->getX();
         $y = $field->getY();
 
-        $arr = str_split(strtoupper($text));
-        $fpdi->setXY($x, $y);
-        foreach($arr as $key => $char) {
-            $fpdi->cell(3, 5, $char);
-            $x += $spacing;
-            $fpdi->setX($x);
-        }
+        $this->writeWithSpacing($text, $x, $y, $spacing);
     }
 
     protected function writeWithSpacing(?string $str, float $x, float $y, float $spacing): void
     {
-        $arr = str_split(strtoupper($str));
+        $arr = str_split(strtoupper(utf8_decode($str)));
         $this->getFpdi()->setXY($x, $y);
         foreach($arr as $key => $char) {
             $this->getFpdi()->cell(3, 5, $char);
