@@ -6,6 +6,11 @@
     "pages": {
         "1": {
             "fields": {
+                "employeurTitre": {
+                    "label": "Employeur",
+                    "type": "title",
+                    "level": 3
+                },
                 "employeurDenomination": {
                     "label": "Dénomination ou nom de l'employeur",
                     "type": "text",
@@ -31,7 +36,7 @@
                     "y": 83.7
                 },
                 "employeurCodePostal": {
-                    "label": "Complément d'adresse",
+                    "label": "Code postal",
                     "type": "text",
                     "x": 33,
                     "y": 90
@@ -117,7 +122,62 @@
                     "type": "text",
                     "x": 158.7,
                     "y": 131.2
+                },
+
+                "salarieTitre": {
+                    "label": "Salarié",
+                    "type": "title",
+                    "level": 3
+                },
+                "salarieNom":{
+                    "label": "Nom",
+                    "type": "text",
+                    "x": 40,
+                    "y": 150.2
+                },
+                "salariePrenom":{
+                    "label": "Prénom",
+                    "type": "text",
+                    "x": 45.2,
+                    "y": 156.2
+                },
+                "salarieNoAdresse":{
+                    "label": "N° adresse",
+                    "type": "text",
+                    "x": 12.9,
+                    "y": 169.4
+                },
+                "salarieVoieAdresse":{
+                    "label": "Voie adresse",
+                    "type": "text",
+                    "x": 38,
+                    "y": 169.4
+                },
+                "salarieComplementAdresse":{
+                    "label": "Complément d'adresse",
+                    "type": "text",
+                    "x": 34.3,
+                    "y": 175.6
+                },
+                "salarieCodePostal":{
+                    "label": "Code postal",
+                    "type": "text",
+                    "x": 32.8,
+                    "y": 181.7
+                },
+                "salarieCommune":{
+                    "label": "Commune",
+                    "type": "text",
+                    "x": 30.2,
+                    "y": 187.8
+                },
+                "salarieTelephone":{
+                    "label": "Téléphone",
+                    "type": "text",
+                    "x": 25.1,
+                    "y": 194.3
                 }
+
             }
         },
         "2": {

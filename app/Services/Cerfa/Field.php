@@ -37,6 +37,8 @@ abstract class Field
                 $class = Text::class; break;
             case 'radio':
                 $class = Radio::class; break;
+            case 'title':
+                $class = Title::class; break;
             default:
                 throw new InvalidArgumentException("Classe non existante.");
         }
