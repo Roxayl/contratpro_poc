@@ -176,8 +176,20 @@
                     "type": "text",
                     "x": 25.1,
                     "y": 194.3
+                },
+                "salarieCourriel":{
+                    "label": "Courriel",
+                    "type": "text",
+                    "x": 8.6,
+                    "y": 204.5
+                },
+                "salarieNirSalarie": {
+                    "label": "Code NIR du salarié",
+                    "description": "Pour les employeurs du secteur privé dans le cadre de l’article L.6353-10 du code du travail.",
+                    "type": "text",
+                    "x": 38.3,
+                    "y": 210.6
                 }
-
             }
         },
         "2": {

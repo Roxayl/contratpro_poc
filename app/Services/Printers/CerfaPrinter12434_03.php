@@ -25,7 +25,7 @@ class CerfaPrinter12434_03 extends CerfaPrinter
         }
     }
 
-    public function printEmployeurCourriel(Field $field) : void
+    public function printEmployeurCourriel(Field $field): void
     {
         $spacing = 3.45;
         $array = explode("@", $field->getValue());
@@ -35,7 +35,7 @@ class CerfaPrinter12434_03 extends CerfaPrinter
         $this->writeWithSpacing($domain, 61, 113.6, $spacing);
     }
 
-    public function printEmployeurConventionCollective(Field $field) : void
+    public function printEmployeurConventionCollective(Field $field): void
     {
         $maxWidth = 22;
         $words = explode(" ", utf8_decode($field->getValue()));
@@ -60,7 +60,7 @@ class CerfaPrinter12434_03 extends CerfaPrinter
         }
     }
 
-    private function printSalarieTelephone(Field $field) : void
+    public function printSalarieTelephone(Field $field): void
     {
         $x = 25.1;
         $y = 194.3;
@@ -73,5 +73,15 @@ class CerfaPrinter12434_03 extends CerfaPrinter
             else            $x += 4;
             $this->getFpdi()->setXY($x, $y);
         }
+    }
+
+    public function printSalarieCourriel(Field $field): void
+    {
+        $spacing = 3.45;
+        $array = explode("@", $field->getValue());
+        $user = $array[0];
+        $domain = $array[1];
+        $this->writeWithSpacing($user, 8.6, 204.5, $spacing);
+        $this->writeWithSpacing($domain, 61.2, 204.5, $spacing);
     }
 }
