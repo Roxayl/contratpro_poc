@@ -12,8 +12,8 @@ abstract class Field
     private ?string $type;
     private ?string $label;
     private ?string $description = null;
-    private ?string $x;
-    private ?string $y;
+    private ?float $x;
+    private ?float $y;
 
     public function __construct(string $name, \stdClass $config, Cerfa $cerfa)
     {
@@ -55,6 +55,16 @@ abstract class Field
     public function getArray() : array
     {
         return get_object_vars($this);
+    }
+
+    public function getX(): ?float
+    {
+        return $this->x;
+    }
+
+    public function getY(): ?float
+    {
+        return $this->y;
     }
 
 }

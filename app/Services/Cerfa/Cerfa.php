@@ -76,6 +76,9 @@ class Cerfa
         return Arr::get( (array)$this->globals, $dot );
     }
 
+    /**
+     * @return Page[]|array
+     */
     public function getPages(): array
     {
         return $this->pages;
