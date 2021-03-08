@@ -13,18 +13,16 @@ class Page
         $this->fields = [];
     }
 
-    public function addField(Field $field)
+    public function addField(Field $field) : void
     {
         $this->fields[$field->getName()] = $field;
     }
 
+    /**
+     * @return Field[]|array
+     */
     public function getFields() : ?array
     {
         return $this->fields;
-    }
-
-    public function fillData() : array
-    {
-        
     }
 }
