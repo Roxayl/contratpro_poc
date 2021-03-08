@@ -84,4 +84,17 @@ class CerfaPrinter12434_03 extends CerfaPrinter
         $this->writeWithSpacing($user, 8.6, 204.5, $spacing);
         $this->writeWithSpacing($domain, 61.2, 204.5, $spacing);
     }
+
+    public function printSalarieDateNaissance(Field $field) : void
+    {
+        $str = $field->getValue();
+        if(empty($str)) return;
+        $spacing = $this->cerfa->getGlobal('defaultSpacing');
+        $jour = (string)($str[0] . $str[1]);
+        $mois = (string)($str[3] . $str[4]);
+        $annee = (string)(substr($str, -4));
+        $this->writeWithSpacing($jour, 44, 223, $spacing);
+        $this->writeWithSpacing($mois, 56.4, 223, $spacing);
+        $this->writeWithSpacing($annee, 68.7, 223, $spacing);
+    }
 }
