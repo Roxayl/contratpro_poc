@@ -3,12 +3,13 @@
 namespace App\Services\Cerfa;
 
 use Illuminate\Http\Response;
+use Illuminate\Support\Arr;
 
 class Cerfa
 {
     private ?string $id;
     private array $pages;
-    private array $globals;
+    private \stdClass $globals;
     private ?CerfaConfig $cerfaConfig;
     private int $pageCount = 0;
 
@@ -30,7 +31,7 @@ class Cerfa
         foreach($config->pages as $noPage => $configPage) {
             $page = new Page($noPage);
             foreach($configPage->fields as $nameField => $configField) {
-                $field = Field::create($nameField, $configField);
+                $field = Field::create($nameField, $configField, $this);
                 $page->addField($field);
             }
             $this->addPage($page);
@@ -58,5 +59,15 @@ class Cerfa
     public function generatePdf() : Response
     {
         return response();
+    }
+
+    public function hasGlobal($dot) : bool
+    {
+        return Arr::has( (array)$this->globals, $dot );
+    }
+
+    public function getGlobal($dot)
+    {
+        return Arr::get( (array)$this->globals, $dot );
     }
 }

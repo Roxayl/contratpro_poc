@@ -6,10 +6,15 @@ class Text extends Field
 {
     public ?float $spacing;
 
-    public function __construct(string $name, \stdClass $config)
+    public function __construct(string $name, \stdClass $config, Cerfa $cerfa)
     {
-        parent::__construct($name, $config);
+        parent::__construct($name, $config, $cerfa);
 
-        $this->spacing = $config->spacing;
+        if($cerfa->hasGlobal('defaultSpacing')) {
+            $spacing = $cerfa->getGlobal('defaultSpacing');
+        } else {
+            $spacing = $config->spacing;
+        }
+        $this->spacing = $spacing;
     }
 }
