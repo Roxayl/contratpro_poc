@@ -70,6 +70,35 @@ class CerfaController extends Controller
             'employeurEffectif' => "33",
             'employeurConventionCollective' => "commerces de détail non alimentaires",
             'employeurIdcc' => "4329",
+
+            'salarieNom' => "Nicolas",
+            'salariePrenom' => "Quentin",
+            'salarieNoAdresse' => "45",
+            "salarieVoieAdresse" => "Rue des Peupliers",
+            "salarieComplementAdresse" => "N/A",
+            "salarieCodePostal" => '13010',
+            "salarieCommune" => 'Marseille',
+            'salarieTelephone' => "068906158",
+            'salarieCourriel' => 'qnicolas@gmail.com',
+            'salarieNirSalarie' => '136469',
+            'salarieDateNaissance' => '03/02/1996',
+            'salarieSexe' => 'M',
+            'salarieRqth' => true,
+            'salarieInscritPoleEmploi' => true,
+            'salarieNoPoleEmploi' => '45134512',
+            'salarieDureePoleEmploi' => '5',
+            'salarieSituationAvantContrat' => 'NA',
+            'salarieTypeMinimumSocial' => 'Q',
+            'salarieDiplomePlusEleveObtenu' => 'AA',
+
+            'tuteurNom' => "Monique",
+            'tuteurPrenom' => "Rolbert",
+            'tuteurEmploi' => "Maître de conférences",
+            'tuteurDateNaissance' => "19/06/1986",
+            'tuteurUtilNom' => "Dupont",
+            'tuteurUtilPrenom' => "Jean",
+            'tuteurUtilEmploi' => "Président",
+            'tuteurUtilDateNaissance' => "03/12/1977"
         ];
     }
 }

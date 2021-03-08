@@ -59,4 +59,19 @@ class CerfaPrinter12434_03 extends CerfaPrinter
             $this->writeWithSpacing($word, $x, $y, $spacing);
         }
     }
+
+    private function printSalarieTelephone(Field $field) : void
+    {
+        $x = 25.1;
+        $y = 194.3;
+        $telephone = str_split($field->getValue());
+        // str_split() enlève le '0' initial du numéro...
+        array_unshift($telephone, '0');
+        foreach($telephone as $i => $chiffre) {
+            $this->getFpdi()->cell(3, 5, $chiffre);
+            if($i % 2 == 0) $x += 5.6;
+            else            $x += 4;
+            $this->getFpdi()->setXY($x, $y);
+        }
+    }
 }
