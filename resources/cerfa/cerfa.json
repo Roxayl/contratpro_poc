@@ -189,6 +189,93 @@
                     "type": "text",
                     "x": 38.3,
                     "y": 210.6
+                },
+                "salarieDateNaissance": {
+                    "label": "Date de naissance",
+                    "description": "Au format JJ/MM/AAAA",
+                    "type": "text",
+                    "x": 44,
+                    "y": 223
+                },
+                "salarieSexe": {
+                    "label": "Sexe",
+                    "type": "radio",
+                    "options": {
+                        "M": {
+                            "label": "M",
+                            "x": 21,
+                            "y": 227.7
+                        },
+                        "F": {
+                            "label": "F",
+                            "x": 30.5,
+                            "y": 227.7
+                        }
+                    }
+                },
+                "salarieRqth": {
+                    "label": "Déclare bénéficier de la reconnaissance travailleur handicapé",
+                    "type": "radio",
+                    "options": {
+                        "oui": {
+                            "label": "Oui",
+                            "x": 127.4,
+                            "y": 172.6
+                        },
+                        "non": {
+                            "label": "Non",
+                            "x": 146.6,
+                            "y": 172.6
+                        }
+                    }
+                },
+                "salarieInscritPoleEmploi": {
+                    "label": "Inscrit à Pôle Emploi",
+                    "type": "radio",
+                    "options": {
+                        "oui": {
+                            "label": "Oui",
+                            "x": 145,
+                            "y": 181.9
+                        },
+                        "non": {
+                            "label": "Non",
+                            "x": 164,
+                            "y": 181.9
+                        }
+                    }
+                },
+                "salarieNoPoleEmploi": {
+                    "label": "N° d'inscription Pôle Emploi",
+                    "description": "Si inscrit à Pôle Emploi",
+                    "type": "text",
+                    "x": 156.4,
+                    "y": 188.2
+                },
+                "salarieDureePoleEmploi": {
+                    "label": "Durée d'inscription à Pôle Emploi",
+                    "description": "Durée en mois, si inscrit à Pôle Emploi",
+                    "type": "text",
+                    "x": 120.5,
+                    "y": 193.5
+                },
+                "salarieSituationAvantContrat": {
+                    "label": "Situation avant contrat",
+                    "type": "text",
+                    "x": 153.5,
+                    "y": 202.7
+                },
+                "salarieTypeMinimumSocial": {
+                    "label": "Type de minimum social",
+                    "type": "text",
+                    "x": 177.1,
+                    "y": 208.6
+                },
+                "salarieDiplomePlusEleveObtenu": {
+                    "label": "Diplôme le plus élevé obtenu",
+                    "type": "text",
+                    "x": 172.4,
+                    "y": 214.8
                 }
             }
         },
