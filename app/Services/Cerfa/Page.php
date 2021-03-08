@@ -17,4 +17,14 @@ class Page
     {
         $this->fields[$field->getName()] = $field;
     }
+
+    public function getFields() : ?array
+    {
+        return $this->fields;
+    }
+
+    public function fillData() : array
+    {
+        
+    }
 }
