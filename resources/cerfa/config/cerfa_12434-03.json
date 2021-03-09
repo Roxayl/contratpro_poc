@@ -185,7 +185,7 @@
                 },
                 "salarieNirSalarie": {
                     "label": "Code NIR du salarié",
-                    "description": "Pour les employeurs du secteur privé dans le cadre de l’article L.6353-10 du code du travail.",
+                    "description": "Correspond au numéro de sécurité sociale, aussi appelé \"Numéro d'Inscription au Répertoire des personnes physiques\". À remplir pour les employeurs du secteur privé dans le cadre de l’article L.6353-10 du code du travail.",
                     "type": "text",
                     "x": 38.3,
                     "y": 210.6
@@ -261,21 +261,109 @@
                 },
                 "salarieSituationAvantContrat": {
                     "label": "Situation avant contrat",
-                    "type": "text",
+                    "type": "select",
                     "x": 153.5,
-                    "y": 202.7
+                    "y": 202.7,
+                    "options": {
+                        "1": {
+                            "label": "Scolaire"
+                        },
+                        "2": {
+                            "label": "Jeune bénéficiaire du CIVIS"
+                        },
+                        "3": {
+                            "label": "Étudiant"
+                        },
+                        "4": {
+                            "label": "Contrat d'apprentissage"
+                        },
+                        "5": {
+                            "label": "Contrat de professionnalisation"
+                        },
+                        "6": {
+                            "label": "Salarié en contrat aidé : CUI-CIE, CUI-CAE"
+                        },
+                        "7": {
+                            "label": "Stagiaire de la formation professionnelle"
+                        },
+                        "8": {
+                            "label": "Salarié (y compris intérimaires et salariés à temps partiel)"
+                        },
+                        "9": {
+                            "label": "Personne à la recherche d'un emploi"
+                        },
+                        "10": {
+                            "label": "Inactif"
+                        }
+                    }
                 },
                 "salarieTypeMinimumSocial": {
-                    "label": "Type de minimum social",
-                    "type": "text",
+                    "label": "Type de minimum social, si bénéficiaire",
+                    "type": "select",
                     "x": 177.1,
-                    "y": 208.6
+                    "y": 208.6,
+                    "options": {
+                        "0": {
+                            "label": "Pas de minimum social",
+                            "print": ""
+                        },
+                        "1": {
+                            "label": "Revenu de solidarité active (RSA)"
+                        },
+                        "2": {
+                            "label": "Allocation de solidarité spécifique (ASS)"
+                        },
+                        "3": {
+                            "label": "Allocation aux adultes handicapés (AAH)"
+                        }
+                    }
                 },
                 "salarieDiplomePlusEleveObtenu": {
                     "label": "Diplôme le plus élevé obtenu",
-                    "type": "text",
+                    "type": "select",
                     "x": 172.4,
-                    "y": 214.8
+                    "y": 214.8,
+                    "options": {
+                        "10": {
+                            "label": "Doctorat"
+                        },
+                        "11": {
+                            "label": "Master 2 professionnel/DESS/diplôme grande école"
+                        },
+                        "12": {
+                            "label": "Master 2 Recherche/DEA"
+                        },
+                        "19": {
+                            "label": "Autre diplôme ou titre de niveau bac +5 ou plus"
+                        },
+                        "41": {
+                            "label": "Baccalauréat professionnel"
+                        },
+                        "42": {
+                            "label": "Baccalauréat général"
+                        },
+                        "43": {
+                            "label": "Baccalauréat technologique"
+                        },
+                        "49": {
+                            "label": "Autre diplôme ou titre de niveau bac"
+                        },
+                        "51": {
+                            "label": "CAP"
+                        },
+                        "52": {
+                            "label": "BEP"
+                        },
+                        "53": {
+                            "label": "Mention complémentaire"
+                        },
+                        "59": {
+                            "label": "Autre diplôme ou titre de niveau CAP/BEP"
+                        },
+                        "60":{
+                            "label": "Aucun diplôme ni titre professionnel"
+                        }
+                    }
                 },
 
                 "tuteurTitre": {
