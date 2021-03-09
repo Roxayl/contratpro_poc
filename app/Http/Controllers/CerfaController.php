@@ -14,7 +14,7 @@ class CerfaController extends Controller
     public function form()
     {
         $cerfaConfig = new CerfaConfig();
-        $cerfaConfig->loadFromFile(base_path('resources/cerfa/cerfa.json'));
+        $cerfaConfig->loadFromFile(base_path('resources/cerfa/config/cerfa_12434-03.json'));
 
         $cerfa = new Cerfa($cerfaConfig);
         return view('cerfa.form')->with('content', $cerfa->generateForm());
@@ -31,7 +31,7 @@ class CerfaController extends Controller
 
         // On charge les données de configuration depuis le json !
         $cerfaConfig = new CerfaConfig();
-        $cerfaConfig->loadFromFile(base_path('resources/cerfa/cerfa.json'));
+        $cerfaConfig->loadFromFile(base_path('resources/cerfa/config/cerfa_12434-03.json'));
 
         // Créer un objet Cerfa
         $cerfa = new Cerfa($cerfaConfig);

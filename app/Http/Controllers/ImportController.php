@@ -31,7 +31,7 @@ class ImportController extends Controller
 
         // On charge les données de configuration depuis le json !
         $cerfaConfig = new CerfaConfig();
-        $cerfaConfig->loadFromFile(base_path('resources/cerfa/cerfa.json'));
+        $cerfaConfig->loadFromFile(base_path('resources/cerfa/config/cerfa_12434-03.json'));
 
         // Emplacement du fichier pdf initial
         $pdfPath = public_path('pdf/cerfa_' . $cerfaConfig->getConfig()->cerfa . '.pdf');
@@ -67,7 +67,7 @@ class ImportController extends Controller
         }
 
         // Générer le fichier zip...
-        $zipFileName = 'cerfa_' . $cerfaConfig->getConfig()->cerfa . '_' . $randStr . '.zip';
+        $zipFileName = 'cerfa_' . $cerfaConfig->getConfig()->cerfa . '_' . $randStrPrefix . '.zip';
         $zipPath = storage_path('app/cerfa/zip/' . $zipFileName);
         $folderPath = storage_path('app/cerfa/generated');
 
