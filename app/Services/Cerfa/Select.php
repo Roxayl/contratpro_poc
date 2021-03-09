@@ -25,8 +25,8 @@ class Select extends Text
         $value = $this->getValue();
 
         $print = $value;
-        if($value !== null && property_exists($this->getOptions()->{$this->getValue()}, 'print')) {
-            $print = $this->getOptions()->{$this->getValue()}->print;
+        if($value !== null && property_exists($this->getOptions()->$value, 'print')) {
+            $print = $this->getOptions()->$value->print;
         }
         return $print;
     }
