@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cerfa12434_03;
 use App\Services\Cerfa\Cerfa;
 use App\Services\Cerfa\CerfaConfig;
 use App\Services\Cerfa\CerfaPdfGenerator;
@@ -10,10 +11,10 @@ use Illuminate\Http\Request;
 
 class CerfaController extends Controller
 {
-    public function form(Request $request)
+    public function form()
     {
         $cerfaConfig = new CerfaConfig();
-        $cerfaConfig->loadFromFile(base_path('resources/cerfa/cerfa.json'));
+        $cerfaConfig->loadFromFile(base_path('resources/cerfa/config/cerfa_12434-03.json'));
 
         $cerfa = new Cerfa($cerfaConfig);
         return view('cerfa.form')->with('content', $cerfa->generateForm());
@@ -24,12 +25,13 @@ class CerfaController extends Controller
         if($request->isMethod('post')) {
             $data = $request->all();
         } else {
-            $data = $this->getData();
+            $model = new Cerfa12434_03();
+            $data = $model->generateData();
         }
 
-        // On charge les données depuis le json !
+        // On charge les données de configuration depuis le json !
         $cerfaConfig = new CerfaConfig();
-        $cerfaConfig->loadFromFile(base_path('resources/cerfa/cerfa.json'));
+        $cerfaConfig->loadFromFile(base_path('resources/cerfa/config/cerfa_12434-03.json'));
 
         // Créer un objet Cerfa
         $cerfa = new Cerfa($cerfaConfig);
@@ -39,7 +41,7 @@ class CerfaController extends Controller
 
         // Génération du PDF !
         // Emplacement du fichier pdf
-        $pdfPath = public_path('pdf/cerfa_' . $cerfaConfig->getConfig()->cerfa . '.pdf');
+        $pdfPath = public_path('cerfa/pdf/cerfa_' . $cerfaConfig->getConfig()->cerfa . '.pdf');
         // Printer contient les méthodes spécifiques au formulaire Cerfa pour gérer certains champs.
         $printer = new CerfaPrinter12434_03($cerfa);
         // PdfGenerator correspond à la classe permettant de gérer l'impression d'un PDF. Elle utilise un
@@ -51,57 +53,5 @@ class CerfaController extends Controller
 
         // Impression !
         $cerfa->generatePdf();
-    }
-
-    private function getData(): array
-    {
-        return [
-            'employeurDenomination' => 'WAM',
-            'employeurNoAdresse' => '23',
-            'employeurVoieAdresse' => "Rue",
-            'employeurComplementAdresse' => "Major Montricher",
-            'employeurCodePostal' => "20000",
-            'employeurCommune' => "Ajaccio",
-            'employeurTelephone' => "0495208678",
-            'employeurCourriel' => 'romu_fabiani@yahoo.fr',
-            'employeurCaisseRetraiteComplementaire' => 'Agirc',
-            'employeurOrgPrevoyance' => 'Test',
-            'employeurParticulierEmployeur' => 'non',
-            'employeurUrssafParticulierEmployeur' => 'test',
-            'employeurSiret' => "36252187900034",
-            'employeurNaf' => "43273",
-            'employeurEffectif' => "33",
-            'employeurConventionCollective' => "commerces de détail non alimentaires",
-            'employeurIdcc' => "4329",
-
-            'salarieNom' => "Nicolas",
-            'salariePrenom' => "Quentin",
-            'salarieNoAdresse' => "45",
-            "salarieVoieAdresse" => "Rue des Peupliers",
-            "salarieComplementAdresse" => "N/A",
-            "salarieCodePostal" => '13010',
-            "salarieCommune" => 'Marseille',
-            'salarieTelephone' => "068906158",
-            'salarieCourriel' => 'qnicolas@gmail.com',
-            'salarieNirSalarie' => '136469',
-            'salarieDateNaissance' => '03/02/1996',
-            'salarieSexe' => 'M',
-            'salarieRqth' => 'oui',
-            'salarieInscritPoleEmploi' => 'oui',
-            'salarieNoPoleEmploi' => '45134512',
-            'salarieDureePoleEmploi' => '5',
-            'salarieSituationAvantContrat' => 'NA',
-            'salarieTypeMinimumSocial' => 'Q',
-            'salarieDiplomePlusEleveObtenu' => 'AA',
-
-            'tuteurNom' => "Monique",
-            'tuteurPrenom' => "Rolbert",
-            'tuteurEmploi' => "Maître de conférences",
-            'tuteurDateNaissance' => "19/06/1986",
-            'tuteurUtilNom' => "Dupont",
-            'tuteurUtilPrenom' => "Jean",
-            'tuteurUtilEmploi' => "Président",
-            'tuteurUtilDateNaissance' => "03/12/1977"
-        ];
     }
 }

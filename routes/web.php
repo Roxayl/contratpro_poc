@@ -13,20 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Home
 Route::get('/', function () {
+    return redirect()->route('cerfa.form');
+});
+Route::get('/laravel', function () {
     return view('welcome');
 });
 
-// Cerfa
-Route::get('cerfa/form', 'App\Http\Controllers\CerfaController@form');
+// Formulaire
+Route::get('cerfa/form', 'App\Http\Controllers\CerfaController@form')->name('cerfa.form');
 Route::match(['get', 'post'], 'cerfa/generate-pdf', 'App\Http\Controllers\CerfaController@generate')->name('cerfa.generate-pdf');
 
-// Contrat
-Route::get('contrat/form', 'App\Http\Controllers\ContratProController@fill');
-Route::get('contrat/create-example', 'App\Http\Controllers\ContratProController@createFromDummyData')
-    ->name('contrat.create-dummy');
-Route::post('contrat/create', 'App\Http\Controllers\ContratProController@createFromRequest')
-    ->name('contrat.create');
+// Import
+Route::get('cerfa/import', 'App\Http\Controllers\ImportController@form')->name('cerfa.import-form');
+Route::post('cerfa/import', 'App\Http\Controllers\ImportController@import')->name('cerfa.import');
 
-// Declaration achat (exemple)
-Route::get('declaration-achat/example', 'App\Http\Controllers\DeclarationAchatController@example');
+// Export
+Route::get('export/json', 'App\Http\Controllers\ExportController@generateJson');
+Route::get('export/many-json/{occurrences?}', 'App\Http\Controllers\ExportController@generateManyJson')->name('export.many-json');
+Route::get('export/csv', 'App\Http\Controllers\ExportController@generateCsv');
+Route::get('export/many-csv/{occurrences?}', 'App\Http\Controllers\ExportController@generateManyCsv')->name('export.many-csv');

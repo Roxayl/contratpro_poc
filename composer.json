@@ -3,19 +3,19 @@
     "type": "project",
     "description": "POC Contrat pro",
     "keywords": [
-        "framework",
-        "laravel"
+        "jmc", "laravel", "cerfa"
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "setasign/fpdf": "1.8.*",
-        "setasign/fpdi": "^2.0"
+        "setasign/fpdi": "^2.0",
+        "ext-zip": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

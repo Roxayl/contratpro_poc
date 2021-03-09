@@ -92,10 +92,10 @@ class Cerfa
         $this->pdfGenerator = $pdfGenerator;
     }
 
-    public function generatePdf()
+    public function generatePdf(string $dest = '', string $name = '', $isUTF8 = false)
     {
         $this->pdfGenerator->fillPdf();
-        $this->pdfGenerator->output();
+        $this->pdfGenerator->output($dest, $name, $isUTF8);
     }
 
     public function getPdfGenerator(): ?CerfaPdfGenerator
