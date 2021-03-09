@@ -23,6 +23,7 @@ Route::match(['get', 'post'], 'cerfa/generate-pdf', 'App\Http\Controllers\CerfaC
 
 // Export
 Route::get('export/json', 'App\Http\Controllers\ExportController@generateJson');
+Route::get('export/many-json', 'App\Http\Controllers\ExportController@generateManyJson');
 
 // Declaration achat (exemple)
 Route::get('declaration-achat/example', 'App\Http\Controllers\DeclarationAchatController@example');

@@ -7,7 +7,6 @@ use App\Services\Cerfa\CerfaPdfGenerator;
 use App\Services\Cerfa\Field;
 use App\Services\Cerfa\Radio;
 use App\Services\Cerfa\Text;
-use Exception;
 use setasign\Fpdi\Fpdi;
 
 class CerfaPrinter implements Printable

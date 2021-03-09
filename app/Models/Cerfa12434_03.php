@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Exception;
 use Faker\Factory;
 use Faker\Generator;
 
 class Cerfa12434_03
 {
     private Generator $faker;
+    private array $data = [];
 
     public function __construct()
     {
@@ -16,7 +18,7 @@ class Cerfa12434_03
 
     public function generateData(): array
     {
-        return [
+        $this->data = [
             'employeurDenomination' => $this->faker->company(),
             'employeurNoAdresse' => $this->faker->buildingNumber(),
             'employeurVoieAdresse' => "Rue",
@@ -64,11 +66,13 @@ class Cerfa12434_03
             'tuteurUtilEmploi' => $this->faker->jobTitle(),
             'tuteurUtilDateNaissance' => "03/12/1977"
         ];
+
+        return $this->data;
     }
 
     public function getFixedData(): array
     {
-        return [
+        $this->data = [
             'employeurDenomination' => 'WAM',
             'employeurNoAdresse' => '23',
             'employeurVoieAdresse' => "Rue",
@@ -116,5 +120,20 @@ class Cerfa12434_03
             'tuteurUtilEmploi' => "Président",
             'tuteurUtilDateNaissance' => "03/12/1977"
         ];
+
+        return $this->data;
+    }
+
+    public function __get($key)
+    {
+        if(isset($this->data[$key])) {
+            return $this->data[$key];
+        }
+        throw new Exception("Not found.");
+    }
+
+    public function __set($key, $value)
+    {
+        $this->data[$key] = $value;
     }
 }
