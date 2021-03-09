@@ -8,7 +8,9 @@
 
     @parent
 
-    <form method="POST" action="{{ route('cerfa.generate-pdf') }}" class="col-lg-8 offset-lg-2">
+    <h2>Remplir un contrat de professionnalisation</h2>
+
+    <form method="POST" action="{{ route('cerfa.generate-pdf') }}">
         @csrf
 
         {!! $content !!}
