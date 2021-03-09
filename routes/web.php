@@ -21,6 +21,10 @@ Route::get('/', function () {
 Route::get('cerfa/form', 'App\Http\Controllers\CerfaController@form');
 Route::match(['get', 'post'], 'cerfa/generate-pdf', 'App\Http\Controllers\CerfaController@generate')->name('cerfa.generate-pdf');
 
+// Import
+Route::get('cerfa/import', 'App\Http\Controllers\ImportController@form');
+Route::post('cerfa/import', 'App\Http\Controllers\ImportController@import')->name('cerfa.import');
+
 // Export
 Route::get('export/json', 'App\Http\Controllers\ExportController@generateJson');
 Route::get('export/many-json/{occurrences?}', 'App\Http\Controllers\ExportController@generateManyJson');
