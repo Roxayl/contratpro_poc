@@ -66,8 +66,8 @@ class CerfaPdfGenerator
         }
     }
 
-    public function output(): void
+    public function output(string $dest = '', string $name = '', $isUTF8 = false): void
     {
-        $this->fpdi->Output();
+        $this->fpdi->Output($dest, $name, $isUTF8);
     }
 }

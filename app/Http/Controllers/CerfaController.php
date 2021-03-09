@@ -29,7 +29,7 @@ class CerfaController extends Controller
             $data = $model->generateData();
         }
 
-        // On charge les données depuis le json !
+        // On charge les données de configuration depuis le json !
         $cerfaConfig = new CerfaConfig();
         $cerfaConfig->loadFromFile(base_path('resources/cerfa/cerfa.json'));
 
