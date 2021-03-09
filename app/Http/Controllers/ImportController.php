@@ -7,6 +7,7 @@ use App\Services\Cerfa\CerfaConfig;
 use App\Services\Cerfa\CerfaPdfGenerator;
 use App\Services\Printers\CerfaPrinter12434_03;
 use Carbon\Carbon;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use ZipArchive;
@@ -34,6 +35,10 @@ class ImportController extends Controller
 
         // Emplacement du fichier pdf initial
         $pdfPath = public_path('pdf/cerfa_' . $cerfaConfig->getConfig()->cerfa . '.pdf');
+        $randStrPrefix = Str::random(6);
+        $generatedFileNamePrefix = 'cerfa_' . $cerfaConfig->getConfig()->cerfa
+            . '_' . $randStrPrefix
+            . '_' . Carbon::now()->format('Y-m-d') . '_';
 
         // Pour chaque donnée Cerfa...
         foreach($cerfaDataList as $thisData) {
@@ -53,16 +58,38 @@ class ImportController extends Controller
             // On définit le générateur de PDF...
             $cerfa->setGenerator($pdfGenerator);
 
-            $randStr = Carbon::now()->format('Y-m-d') . '_' . Str::random(6);
-            $fileName = 'cerfa_' . $cerfaConfig->getConfig()->cerfa . '_' . $randStr . '.pdf';
+            $randStr = Str::random(6);
+            $fileName = $generatedFileNamePrefix . $randStr . '.pdf';
             $storagePath = storage_path('app/cerfa/generated/' . $fileName);
 
             // Impression ! ... et stockage dans un fichier
             $cerfa->generatePdf($storagePath, 'F');
         }
+
+        // Générer le fichier zip...
+        $zipFileName = 'cerfa_' . $cerfaConfig->getConfig()->cerfa . '_' . $randStr . '.zip';
+        $zipPath = storage_path('app/cerfa/zip/' . $zipFileName);
+        $folderPath = storage_path('app/cerfa/generated');
+
+        $this->zipFiles($zipPath, $folderPath, $generatedFileNamePrefix);
     }
 
-    private function parseCsv(array $lines)
+    private function zipFiles($zipPath, $folderPath, $filePrefix)
+    {
+        $zip = new ZipArchive();
+
+        $opened = $zip->open($zipPath, ZipArchive::CREATE);
+        if($opened !== true) {
+            throw new FileNotFoundException("Zip non trouvé.");
+        }
+
+        $zip->addGlob($folderPath . DIRECTORY_SEPARATOR . $filePrefix . '*.pdf',
+            0, ['remove_all_path' => true]);
+
+        $zip->close();
+    }
+
+    private function parseCsv(array $lines): array
     {
         // Enlever les éléments du tableau vides.
         $array = array_filter($lines);

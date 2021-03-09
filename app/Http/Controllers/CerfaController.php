@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class CerfaController extends Controller
 {
-    public function form(Request $request)
+    public function form()
     {
         $cerfaConfig = new CerfaConfig();
         $cerfaConfig->loadFromFile(base_path('resources/cerfa/cerfa.json'));
