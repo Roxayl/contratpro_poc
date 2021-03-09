@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cerfa12434_03;
 use App\Services\Cerfa\Cerfa;
 use App\Services\Cerfa\CerfaConfig;
 use App\Services\Cerfa\CerfaPdfGenerator;
@@ -24,7 +25,8 @@ class CerfaController extends Controller
         if($request->isMethod('post')) {
             $data = $request->all();
         } else {
-            $data = $this->getData();
+            $model = new Cerfa12434_03();
+            $data = $model->generateData();
         }
 
         // On charge les données depuis le json !

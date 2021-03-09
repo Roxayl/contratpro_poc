@@ -21,8 +21,8 @@ Route::get('/', function () {
 Route::get('cerfa/form', 'App\Http\Controllers\CerfaController@form');
 Route::match(['get', 'post'], 'cerfa/generate-pdf', 'App\Http\Controllers\CerfaController@generate')->name('cerfa.generate-pdf');
 
-// Cerfa
-Route::get('export/json', 'App\Http\Controllers\CsvController@generateJson');
+// Export
+Route::get('export/json', 'App\Http\Controllers\ExportController@generateJson');
 
 // Declaration achat (exemple)
 Route::get('declaration-achat/example', 'App\Http\Controllers\DeclarationAchatController@example');

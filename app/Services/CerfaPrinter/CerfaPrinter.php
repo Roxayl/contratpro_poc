@@ -59,7 +59,8 @@ class CerfaPrinter implements Printable
         }
     }
 
-    protected function printRadio(Radio $field) {
+    protected function printRadio(Radio $field): void
+    {
         $text = 'X';
         $value = $field->getValue();
 
