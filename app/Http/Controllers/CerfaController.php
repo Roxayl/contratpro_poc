@@ -41,7 +41,7 @@ class CerfaController extends Controller
 
         // Génération du PDF !
         // Emplacement du fichier pdf
-        $pdfPath = public_path('pdf/cerfa_' . $cerfaConfig->getConfig()->cerfa . '.pdf');
+        $pdfPath = public_path('cerfa/pdf/cerfa_' . $cerfaConfig->getConfig()->cerfa . '.pdf');
         // Printer contient les méthodes spécifiques au formulaire Cerfa pour gérer certains champs.
         $printer = new CerfaPrinter12434_03($cerfa);
         // PdfGenerator correspond à la classe permettant de gérer l'impression d'un PDF. Elle utilise un

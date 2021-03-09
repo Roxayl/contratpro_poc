@@ -34,7 +34,7 @@ class ImportController extends Controller
         $cerfaConfig->loadFromFile(base_path('resources/cerfa/config/cerfa_12434-03.json'));
 
         // Emplacement du fichier pdf initial
-        $pdfPath = public_path('pdf/cerfa_' . $cerfaConfig->getConfig()->cerfa . '.pdf');
+        $pdfPath = public_path('cerfa/pdf/cerfa_' . $cerfaConfig->getConfig()->cerfa . '.pdf');
         $randStrPrefix = Str::random(6);
         $generatedFileNamePrefix = 'cerfa_' . $cerfaConfig->getConfig()->cerfa
             . '_' . $randStrPrefix
