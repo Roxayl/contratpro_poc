@@ -3,8 +3,7 @@
     "type": "project",
     "description": "POC Contrat pro",
     "keywords": [
-        "framework",
-        "laravel"
+        "jmc", "laravel", "cerfa"
     ],
     "license": "MIT",
     "require": {
