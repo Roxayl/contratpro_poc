@@ -72,6 +72,8 @@ class ImportController extends Controller
         $folderPath = storage_path('app/cerfa/generated');
 
         $this->zipFiles($zipPath, $folderPath, $generatedFileNamePrefix);
+
+        return response()->download($zipPath, $zipFileName);
     }
 
     private function zipFiles($zipPath, $folderPath, $filePrefix)

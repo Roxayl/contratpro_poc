@@ -8,6 +8,7 @@ use App\Services\Cerfa\Field;
 use App\Services\Cerfa\Radio;
 use App\Services\Cerfa\Text;
 use setasign\Fpdi\Fpdi;
+use Illuminate\Support\Str;
 
 class CerfaPrinter implements Printable
 {
@@ -49,7 +50,7 @@ class CerfaPrinter implements Printable
 
     protected function writeWithSpacing(?string $str, float $x, float $y, float $spacing): void
     {
-        $arr = str_split(strtoupper(utf8_decode($str)));
+        $arr = str_split(utf8_decode(Str::upper($str)));
         $this->getFpdi()->setXY($x, $y);
         foreach($arr as $key => $char) {
             $this->getFpdi()->cell(3, 5, $char);
@@ -72,6 +73,6 @@ class CerfaPrinter implements Printable
 
     public function getFpdi(): Fpdi
     {
-        return $this->cerfa->getPdfGenerator()->getFpdi();;
+        return $this->cerfa->getPdfGenerator()->getFpdi();
     }
 }
