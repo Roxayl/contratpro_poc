@@ -21,12 +21,8 @@ Route::get('/', function () {
 Route::get('cerfa/form', 'App\Http\Controllers\CerfaController@form');
 Route::match(['get', 'post'], 'cerfa/generate-pdf', 'App\Http\Controllers\CerfaController@generate')->name('cerfa.generate-pdf');
 
-// Contrat
-Route::get('contrat/form', 'App\Http\Controllers\ContratProController@fill');
-Route::get('contrat/create-example', 'App\Http\Controllers\ContratProController@createFromDummyData')
-    ->name('contrat.create-dummy');
-Route::post('contrat/create', 'App\Http\Controllers\ContratProController@createFromRequest')
-    ->name('contrat.create');
+// Cerfa
+Route::get('export/json', 'App\Http\Controllers\CsvController@generateJson');
 
 // Declaration achat (exemple)
 Route::get('declaration-achat/example', 'App\Http\Controllers\DeclarationAchatController@example');
