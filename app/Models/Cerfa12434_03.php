@@ -30,6 +30,13 @@ class Cerfa12434_03
             return str_replace(' ', '', $this->faker->postcode());
         };
 
+        $nirSalarie = function () {
+            return $this->faker->optional(0.5)->passthrough(
+                $this->faker->numberBetween(1, 2)
+                . $this->faker->numberBetween(56, 97)
+                . $this->faker->numerify('##########'));
+        };
+
         $this->data = [
             'employeurDenomination' => $this->faker->company(),
             'employeurNoAdresse' => $this->faker->buildingNumber(),
@@ -59,7 +66,7 @@ class Cerfa12434_03
             "salarieCommune" => $this->faker->city(),
             'salarieTelephone' => '06' . $this->faker->numerify('########'),
             'salarieCourriel' => $this->faker->email(),
-            'salarieNirSalarie' => '136469',
+            'salarieNirSalarie' => $nirSalarie(),
             'salarieDateNaissance' => '03/02/1996',
             'salarieSexe' => $this->faker->randomElement(['M', 'F']),
             'salarieRqth' => $this->faker->randomElement(['oui', 'non']),
