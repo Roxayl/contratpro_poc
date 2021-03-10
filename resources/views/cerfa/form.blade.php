@@ -10,7 +10,7 @@
 
     <h2>Remplir un contrat de professionnalisation</h2>
 
-    <button class="btn btn-primary float-end" id="pre-remplir">Pré-remplir les données...</button>
+    <button class="btn btn-outline-primary" id="pre-remplir">Pré-remplir les données...</button>
 
     <form method="POST" action="{{ route('cerfa.generate-pdf') }}">
         @csrf
