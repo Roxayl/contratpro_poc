@@ -54,7 +54,6 @@
                             if(json.hasOwnProperty(fieldName)) {
                                 index = Math.floor(Math.random() * $($select).find('option').length) + 1;
                                 if(index === 0) index = 1;
-                                console.log($select, index);
                                 $select.find('option:nth-child(' + index + ')').prop("selected", true);
                             }
                         });
